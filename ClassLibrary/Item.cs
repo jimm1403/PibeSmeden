@@ -15,37 +15,6 @@ namespace ClassLibrary
         double weight;
         int pieces;
 
-        //public string ItemType
-        //{
-        //    get { return itemType; }
-        //    set { itemType = value; }
-        //}
-        //public string Brand
-        //{
-        //    get { return brand; }
-        //    set { brand = value; }
-        //}
-        //public string BrandType
-        //{
-        //    get { return brandType; }
-        //    set { brandType = value; }
-        //}
-        //public double Price
-        //{
-        //    get { return price; }
-        //    set { price = value; }
-        //}
-        //public double Weight
-        //{
-        //    get { return weight; }
-        //    set { weight = value; }
-        //}
-        //public int Pieces
-        //{
-        //    get { return pieces; }
-        //    set { pieces = value; }
-        //}
-
         public Item(string _itemType, string _brand, string _brandType, double _price, int _pieces)
         {
             itemType = _itemType;
@@ -63,9 +32,9 @@ namespace ClassLibrary
             weight = _weight;
         }
 
-        public void AddToInventoryList()
+        public void AddToInventoryList(Item item)
         {
-            itemList.Add();
+            itemList.Add(item);
         }
         public List<Item> GetList()
         {
