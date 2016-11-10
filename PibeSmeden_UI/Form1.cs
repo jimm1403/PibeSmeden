@@ -15,5 +15,15 @@ namespace PibeSmeden_UI
         {
             InitializeComponent();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtChosenProduct.Text = ChooseProduct.Text;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
