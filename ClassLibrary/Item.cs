@@ -15,46 +15,57 @@ namespace ClassLibrary
         double weight;
         int pieces;
 
-        public string ItemType
-        {
-            get { return itemType; }
-            set { itemType = value; }
-        }
-        public string Brand
-        {
-            get { return brand; }
-            set { brand = value; }
-        }
-        public string BrandType
-        {
-            get { return brandType; }
-            set { brandType = value; }
-        }
-        public double Price
-        {
-            get { return price; }
-            set { price = value; }
-        }
-        public double Weight
-        {
-            get { return weight; }
-            set { weight = value; }
-        }
-        public int Pieces
-        {
-            get { return pieces; }
-            set { pieces = value; }
-        }
-        public void AddToInventoryList(string _itemType, string _brand, string _brandType, double _price, int _pieces)
-        {
-            Item item = new Item();
-            item.ItemType = _itemType;
-            item.Brand = _brand;
-            item.BrandType = _brandType;
-            item.Price = _price;
-            item.Pieces = _pieces;
+        //public string ItemType
+        //{
+        //    get { return itemType; }
+        //    set { itemType = value; }
+        //}
+        //public string Brand
+        //{
+        //    get { return brand; }
+        //    set { brand = value; }
+        //}
+        //public string BrandType
+        //{
+        //    get { return brandType; }
+        //    set { brandType = value; }
+        //}
+        //public double Price
+        //{
+        //    get { return price; }
+        //    set { price = value; }
+        //}
+        //public double Weight
+        //{
+        //    get { return weight; }
+        //    set { weight = value; }
+        //}
+        //public int Pieces
+        //{
+        //    get { return pieces; }
+        //    set { pieces = value; }
+        //}
 
-            itemList.Add(item);
+        public Item(string _itemType, string _brand, string _brandType, double _price, int _pieces)
+        {
+            itemType = _itemType;
+            brand = _brand;
+            brandType = _brandType;
+            price = _price;
+            pieces = _pieces;
+        }
+        public Item(string _itemType, string _brand, string _brandType, double _price, double _weight)
+        {
+            itemType = _itemType;
+            brand = _brand;
+            brandType = _brandType;
+            price = _price;
+            weight = _weight;
+        }
+
+        public void AddToInventoryList()
+        {
+            itemList.Add();
         }
         public List<Item> GetList()
         {
