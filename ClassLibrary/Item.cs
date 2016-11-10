@@ -61,5 +61,19 @@ namespace ClassLibrary
             return itemList;
         }
 
+        public override string ToString() // does not support weight yet
+        {
+            string retstring;
+
+            string priceDec;
+            priceDec = string.Format("{0:0.00}", price);
+            string[] priceUSA = priceDec.Split(',');
+
+            string priceUS = priceUSA[0] + "." + priceUSA[1];
+           
+            retstring = itemType + " " + brand + " " + brandType + " " + priceUS + " " + pieces; 
+
+            return retstring;
+        }
     }
 }
