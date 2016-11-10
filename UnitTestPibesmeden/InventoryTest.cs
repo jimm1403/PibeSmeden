@@ -10,7 +10,7 @@ namespace UnitTestPibesmeden
     {
 
         List<Item> itemList = new List<Item>();
-
+        /*
         [TestMethod]
         public void CanAddNewItemToList()
         {
@@ -21,6 +21,6 @@ namespace UnitTestPibesmeden
             itemList = myItem.GetList();
 
             Assert.AreEqual(1, itemList.Count);
-        }
+        }*/
     }
 }

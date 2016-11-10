@@ -15,6 +15,10 @@ namespace ClassLibrary
         double weight;
         int pieces;
 
+        public Item()
+        {
+
+        }
         public Item(string _itemType, string _brand, string _brandType, double _price, int _pieces)
         {
             itemType = _itemType;
@@ -36,9 +40,23 @@ namespace ClassLibrary
         {
             itemList.Add(item);
         }
-        public List<Item> GetList()
+        public string GetList()
         {
-            return itemList;
+            Item myItem = new Item("lol", "lol", "lol", 44, 20);
+            string tempItem = "";
+
+            tempItem = myItem.ToString();
+            //foreach (Item item in itemList)
+            //{
+            //    tempItem = item.ToString();
+            //}
+
+            return tempItem;
+        }
+
+        public override string ToString()
+        {
+            return itemType + " - " + brand + " - " + brandType + " - " + price + " - " + pieces;
         }
 
     }
