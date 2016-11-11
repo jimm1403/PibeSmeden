@@ -40,24 +40,43 @@ namespace ClassLibrary
         {
             itemList.Add(item);
         }
-        public string GetList()
+
+        public List<Item> GetList()
         {
-            Item myItem = new Item("lol", "lol", "lol", 44, 20);
-            string tempItem = "";
-
-            tempItem = myItem.ToString();
-            //foreach (Item item in itemList)
-            //{
-            //    tempItem = item.ToString();
-            //}
-
-            return tempItem;
+            return itemList;
         }
+        //public string GetList()
+        //{
+        //    Item myItem = new Item("lol", "lol", "lol", 44, 20);
+        //    string tempItem = "";
 
-        public override string ToString()
+        //    tempItem = myItem.ToString();
+        //    //foreach (Item item in itemList)
+        //    //{
+        //    //    tempItem = item.ToString();
+        //    //}
+
+        //    return tempItem;
+        //}
+
+        //public override string ToString()
+        //{
+        //    return itemType + " - " + brand + " - " + brandType + " - " + price + " - " + pieces;
+        //}
+
+        public override string ToString() // does not support weight yet
         {
-            return itemType + " - " + brand + " - " + brandType + " - " + price + " - " + pieces;
-        }
+            string retstring;
 
+            string priceDec;
+            priceDec = string.Format("{0:0.00}", price);
+            string[] priceUSA = priceDec.Split(',');
+
+            string priceUS = priceUSA[0] + "." + priceUSA[1];
+           
+            retstring = itemType + " " + brand + " " + brandType + " " + priceUS + " " + pieces; 
+
+            return retstring;
+        }
     }
 }

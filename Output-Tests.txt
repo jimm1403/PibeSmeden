@@ -1,0 +1,13 @@
+﻿------ Discover test started ------
+NUnit Adapter 3.5.1.0: Test discovery starting
+Assembly contains no NUnit 3.0 tests: C:\Users\Andre\Source\Repos\PibeSmeden\ClassLibrary\bin\Debug\ClassLibrary.dll
+Assembly contains no NUnit 3.0 tests: C:\Users\Andre\Source\Repos\PibeSmeden\PibeSmeden_UI\bin\Debug\PibeSmeden_UI.exe
+Assembly contains no NUnit 3.0 tests: C:\Users\Andre\Source\Repos\PibeSmeden\UnitTestPibesmeden\bin\Debug\UnitTestPibesmeden.dll
+NUnit Adapter 3.5.1.0: Test discovery complete
+========== Discover test finished: 2 found (0:00:00,2113891) ==========
+------ Run test started ------
+NUnit Adapter 3.5.1.0: Test execution started
+Running all tests in C:\Users\Andre\Source\Repos\PibeSmeden\UnitTestPibesmeden\bin\Debug\UnitTestPibesmeden.dll
+NUnit failed to load C:\Users\Andre\Source\Repos\PibeSmeden\UnitTestPibesmeden\bin\Debug\UnitTestPibesmeden.dll
+NUnit Adapter 3.5.1.0: Test execution complete
+========== Run test finished: 2 run (0:00:00,987093) ==========
