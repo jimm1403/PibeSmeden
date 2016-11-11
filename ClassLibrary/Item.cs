@@ -40,24 +40,29 @@ namespace ClassLibrary
         {
             itemList.Add(item);
         }
-        public string GetList()
+
+        public List<Item> GetList()
         {
-            Item myItem = new Item("lol", "lol", "lol", 44, 20);
-            string tempItem = "";
-
-            tempItem = myItem.ToString();
-            //foreach (Item item in itemList)
-            //{
-            //    tempItem = item.ToString();
-            //}
-
-            return tempItem;
+            return itemList;
         }
+        //public string GetList()
+        //{
+        //    Item myItem = new Item("lol", "lol", "lol", 44, 20);
+        //    string tempItem = "";
 
-        public override string ToString()
-        {
-            return itemType + " - " + brand + " - " + brandType + " - " + price + " - " + pieces;
-        }
+        //    tempItem = myItem.ToString();
+        //    //foreach (Item item in itemList)
+        //    //{
+        //    //    tempItem = item.ToString();
+        //    //}
+
+        //    return tempItem;
+        //}
+
+        //public override string ToString()
+        //{
+        //    return itemType + " - " + brand + " - " + brandType + " - " + price + " - " + pieces;
+        //}
 
         public override string ToString() // does not support weight yet
         {

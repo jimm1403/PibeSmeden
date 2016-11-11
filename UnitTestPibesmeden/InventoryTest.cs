@@ -15,9 +15,9 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanAddNewItemToList()
         {
-            Item myItem = new Item();
+            Item myItem = new Item("Cigaretter", "Prince", "Light", 44.00, 20);
 
-            myItem.AddToInventoryList("Cigaretter", "Prince", "Light", 44.00, 20);
+            myItem.AddToInventoryList(myItem);
 
             itemList = myItem.GetList();
 
@@ -26,9 +26,9 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSeeTheItemInList()
         {
-            Item myItem = new Item();
+            Item myItem = new Item("Cigaretter", "Prince", "Light", 44.00, 20);
 
-            myItem.AddToInventoryList("Cigaretter", "Prince", "Light", 44.00, 20);
+            myItem.AddToInventoryList(myItem);
 
             itemList = myItem.GetList();
 
