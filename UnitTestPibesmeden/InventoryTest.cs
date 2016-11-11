@@ -27,7 +27,12 @@ namespace UnitTestPibesmeden
             Assert.AreEqual(1, itemList.Count);
         }
         [TestMethod]
-        public void CanSeeTheItemInList()
+        public void CanAddMultipleItemsToList()
+        {
+            throw new NotImplementedException();
+        }
+        [TestMethod]
+        public void CanSeeTheItemInListWithPieces()
         {
             dummy.AddToInventoryList(cigaret1);
 
@@ -35,6 +40,26 @@ namespace UnitTestPibesmeden
 
             Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[0].ToString());
 
+        }
+        [TestMethod]
+        public void CanSeeTheItemInListWithWeight()
+        {
+            throw new NotImplementedException();
+        }
+        [TestMethod]
+        public void CanSeeMultipleItemsInListWithPieces()
+        {
+            throw new NotImplementedException();
+        }
+        [TestMethod]
+        public void CanSeeMultipleItemsInListWithWeight()
+        {
+            throw new NotImplementedException();
+        }
+        [TestMethod]
+        public void CanSeeMultipleItemsInListWithWeightAndPieces()
+        {
+            throw new NotImplementedException();
         }
     }
 }

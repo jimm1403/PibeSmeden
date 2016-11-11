@@ -46,19 +46,17 @@ namespace ClassLibrary
             return itemList;
         }
        
-        public override string ToString() // does not support weight yet
+        public override string ToString() // does not support weight yet, needs new names for varibles
         {
-            string retstring;
+            string output;
 
-            string priceDec;
-            priceDec = string.Format("{0:0.00}", price);
-            string[] priceUSA = priceDec.Split(',');
+            string priceS = "" + price;
+            priceS = string.Format("{0:0.00}", price);
+            priceS = priceS.Replace(',', '.');
 
-            string priceUS = priceUSA[0] + "." + priceUSA[1];
-           
-            retstring = itemType + " " + brand + " " + brandType + " " + priceUS + " " + pieces; 
+            output = itemType + " " + brand + " " + brandType + " " + priceS + " " + pieces; 
 
-            return retstring;
+            return output;
         }
     }
 }
