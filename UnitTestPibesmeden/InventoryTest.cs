@@ -29,7 +29,13 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanAddMultipleItemsToList()
         {
-            throw new NotImplementedException();
+            Item[] Items = new Item[] {cigaret1, cigaret2};
+
+            dummy.AddMultipleToInventoryList(Items);
+
+            itemList = dummy.GetList();
+
+            Assert.AreEqual(2, itemList.Count);
         }
         [TestMethod]
         public void CanSeeTheItemInListWithPieces()
@@ -44,22 +50,80 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSeeTheItemInListWithWeight()
         {
-            throw new NotImplementedException();
+            dummy.AddToInventoryList(roegTobak1);
+
+            itemList = dummy.GetList();
+
+            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToString());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithPieces()
         {
-            throw new NotImplementedException();
+            Item[] Items = new Item[] { cigaret1, cigaret2 };
+
+            dummy.AddMultipleToInventoryList(Items);
+
+            itemList = dummy.GetList();
+
+            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[0].ToString());
+            Assert.AreEqual("Cigaretter Kings Blå 41.00 20", itemList[1].ToString());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeight()
         {
-            throw new NotImplementedException();
+            Item[] Items = new Item[] { roegTobak1, roegTobak2};
+
+            dummy.AddMultipleToInventoryList(Items);
+
+            itemList = dummy.GetList();
+
+            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToString());
+            Assert.AreEqual("Røg Tobak Escort White 113.95 73.00", itemList[1].ToString());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeightAndPieces()
         {
-            throw new NotImplementedException();
+            Item[] Items = new Item[] { roegTobak1, cigaret1};
+
+            dummy.AddMultipleToInventoryList(Items);
+
+            itemList = dummy.GetList();
+
+            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToString());
+            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[1].ToString());
+        }
+        [TestMethod]
+        public void CanSearchAndRetriveNewListWithHitsUsingAString()
+        {
+            Item[] Items = new Item[] { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+
+            dummy.AddMultipleToInventoryList(Items);
+
+            itemList = dummy.SearchAndRetrive("Cigaretter");
+
+            Assert.AreEqual(2, itemList.Count);
+        }
+        [TestMethod]
+        public void CanSearchAndRetriveNewListWithHitsUsingAInt()
+        {
+            Item[] Items = new Item[] { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+
+            dummy.AddMultipleToInventoryList(Items);
+
+            itemList = dummy.SearchAndRetrive(20);
+
+            Assert.AreEqual(2, itemList.Count);
+        }
+        [TestMethod]
+        public void CanSearchAndRetriveNewListWithHitsUsingADouble()
+        {
+            Item[] Items = new Item[] { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+
+            dummy.AddMultipleToInventoryList(Items);
+
+            itemList = dummy.SearchAndRetrive(73.00);
+
+            Assert.AreEqual(1, itemList.Count);
         }
     }
 }
