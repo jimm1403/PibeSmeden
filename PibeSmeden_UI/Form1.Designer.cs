@@ -63,7 +63,7 @@
             this.txtChooseProduct.Size = new System.Drawing.Size(126, 13);
             this.txtChooseProduct.TabIndex = 1;
             this.txtChooseProduct.TabStop = false;
-            this.txtChooseProduct.Text = "Vælg Produkt";
+            this.txtChooseProduct.Text = "Vælg Kategori";
             this.txtChooseProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtChooseProduct.WordWrap = false;
             // 
