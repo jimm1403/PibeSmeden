@@ -30,6 +30,7 @@
         {
             this.ChooseProduct = new System.Windows.Forms.ComboBox();
             this.txtChooseProduct = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.txtChosenProduct = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -65,18 +66,29 @@
             this.txtChooseProduct.Text = "Vælg Produkt";
             this.txtChooseProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtChooseProduct.WordWrap = false;
-            this.txtChooseProduct.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.ForeColor = System.Drawing.Color.Black;
+            this.btnAdd.Location = new System.Drawing.Point(35, 124);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 4;
+            this.btnAdd.Text = "Tilføj";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtChosenProduct
             // 
             this.txtChosenProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChosenProduct.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtChosenProduct.Location = new System.Drawing.Point(196, 63);
+            this.txtChosenProduct.Location = new System.Drawing.Point(35, 153);
             this.txtChosenProduct.Name = "txtChosenProduct";
             this.txtChosenProduct.ReadOnly = true;
             this.txtChosenProduct.Size = new System.Drawing.Size(126, 13);
-            this.txtChosenProduct.TabIndex = 2;
+            this.txtChosenProduct.TabIndex = 13;
             this.txtChosenProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtChosenProduct.TextChanged += new System.EventHandler(this.txtChosenProduct_TextChanged);
             // 
             // Form1
             // 
@@ -84,6 +96,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 281);
             this.Controls.Add(this.txtChosenProduct);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtChooseProduct);
             this.Controls.Add(this.ChooseProduct);
             this.ForeColor = System.Drawing.Color.Transparent;
@@ -101,6 +114,7 @@
 
         private System.Windows.Forms.ComboBox ChooseProduct;
         private System.Windows.Forms.TextBox txtChooseProduct;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtChosenProduct;
     }
 }
