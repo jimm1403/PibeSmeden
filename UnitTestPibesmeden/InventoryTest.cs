@@ -29,7 +29,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanAddMultipleItemsToList()
         {
-            Item[] Items = new Item[] {cigaret1, cigaret2};
+            List<Item> Items = new List<Item>() { cigaret1, cigaret2};
 
             dummy.AddMultipleToInventoryList(Items);
 
@@ -59,7 +59,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSeeMultipleItemsInListWithPieces()
         {
-            Item[] Items = new Item[] { cigaret1, cigaret2 };
+            List<Item> Items = new List<Item>() { cigaret1, cigaret2 };
 
             dummy.AddMultipleToInventoryList(Items);
 
@@ -71,7 +71,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeight()
         {
-            Item[] Items = new Item[] { roegTobak1, roegTobak2};
+            List<Item> Items = new List<Item>() { roegTobak1, roegTobak2};
 
             dummy.AddMultipleToInventoryList(Items);
 
@@ -83,7 +83,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeightAndPieces()
         {
-            Item[] Items = new Item[] { roegTobak1, cigaret1};
+            List<Item> Items = new List<Item>() { roegTobak1, cigaret1};
 
             dummy.AddMultipleToInventoryList(Items);
 
@@ -95,7 +95,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingAString()
         {
-            Item[] Items = new Item[] { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> Items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
 
             dummy.AddMultipleToInventoryList(Items);
 
@@ -106,22 +106,22 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingAInt()
         {
-            Item[] Items = new Item[] { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> Items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
 
             dummy.AddMultipleToInventoryList(Items);
 
-            itemList = dummy.SearchAndRetrive(20);
+            itemList = dummy.SearchAndRetrive("20");
 
             Assert.AreEqual(2, itemList.Count);
         }
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingADouble()
         {
-            Item[] Items = new Item[] { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> Items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
 
             dummy.AddMultipleToInventoryList(Items);
 
-            itemList = dummy.SearchAndRetrive(73.00);
+            itemList = dummy.SearchAndRetrive("73.00");
 
             Assert.AreEqual(1, itemList.Count);
         }
