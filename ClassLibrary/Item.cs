@@ -41,12 +41,9 @@ namespace ClassLibrary
             itemList.Add(item);
         }
 
-        public void AddMultipleToInventoryList(Item[] items)
+        public void AddMultipleToInventoryList(List<Item> items)
         {
-            foreach (Item item in items)
-            {
-                itemList.Add(item);
-            }
+            itemList.AddRange(items);
         }
 
         public List<Item> GetList()
@@ -84,90 +81,22 @@ namespace ClassLibrary
             return output;
         }
 
-        public List<Item> SearchAndRetrive<T>(T searchTerm)
+        public List<Item> SearchAndRetrive(string searchTerm)
         {
             List<Item> output = new List<Item>();
-
-            if (typeof(T) == typeof(string))
-            {
-                foreach (Item str in itemList)
+            
+                foreach (Item item in itemList)
                 {
-                    if (itemType.Equals(searchTerm))
+                    if (item.ToString().Contains(searchTerm))
                     {
-                        output.Add(str);
-                    }
-                    else if (brand.Equals(searchTerm))
-                    {
-                        output.Add(str);
-                    }
-                    else if (brandType.Equals(searchTerm))
-                    {
-                        output.Add(str);
-                    } 
-                }
-                if (output.Count == 0)
-                {
-                    throw new Exception("Search term did not match anything");
-                }
-            }
-            else if (typeof(T) == typeof(int))
-            {
-                foreach (Item num in itemList)
-                {
-                    if (pieces.Equals(searchTerm))
-                    {
-                        output.Add(num);
+                        output.Add(item);
                     }
                 }
                 if (output.Count == 0)
                 {
                     throw new Exception("Search term did not match anything");
                 }
-            }
-            else if (typeof(T) == typeof(double))
-            {
-                foreach (Item dec in itemList)
-                {
-                    if (price.Equals(searchTerm))
-                    {
-                        output.Add(dec);
-                    }
-                    else if (weight.Equals(searchTerm))
-                    {
-                        output.Add(dec);
-                    }
-                }
-                if (output.Count == 0)
-                {
-                    throw new Exception("Search term did not match anything");
-                }
-            }
-            else
-            {
-                throw new Exception("invalid item type");
-            }
-
             return output;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-            {
-                return false;
-            }
-            if (GetType() != obj.GetType())
-            {
-                return false;
-            }
-            if (this == obj)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }
