@@ -46,7 +46,7 @@
             "Filtre",
             "Cigar",
             "Tobak Pestiller"});
-            this.ChooseProduct.Location = new System.Drawing.Point(196, 36);
+            this.ChooseProduct.Location = new System.Drawing.Point(12, 31);
             this.ChooseProduct.MaxDropDownItems = 6;
             this.ChooseProduct.Name = "ChooseProduct";
             this.ChooseProduct.Size = new System.Drawing.Size(126, 21);
@@ -57,10 +57,10 @@
             // 
             this.txtChooseProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChooseProduct.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtChooseProduct.Location = new System.Drawing.Point(196, 10);
+            this.txtChooseProduct.Location = new System.Drawing.Point(12, 12);
             this.txtChooseProduct.Name = "txtChooseProduct";
             this.txtChooseProduct.ReadOnly = true;
-            this.txtChooseProduct.Size = new System.Drawing.Size(126, 13);
+            this.txtChooseProduct.Size = new System.Drawing.Size(79, 13);
             this.txtChooseProduct.TabIndex = 1;
             this.txtChooseProduct.TabStop = false;
             this.txtChooseProduct.Text = "Vælg Kategori";
@@ -70,11 +70,11 @@
             // btnAdd
             // 
             this.btnAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd.Location = new System.Drawing.Point(35, 124);
+            this.btnAdd.Location = new System.Drawing.Point(12, 58);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Tilføj";
+            this.btnAdd.Text = "Tilføj ny";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 281);
+            this.ClientSize = new System.Drawing.Size(229, 140);
             this.Controls.Add(this.txtChosenProduct);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtChooseProduct);
@@ -102,7 +102,7 @@
             this.ForeColor = System.Drawing.Color.Transparent;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(530, 320);
-            this.MinimumSize = new System.Drawing.Size(530, 320);
+            this.MinimumSize = new System.Drawing.Size(230, 120);
             this.Name = "Form1";
             this.Text = "Storage Manager";
             this.ResumeLayout(false);
