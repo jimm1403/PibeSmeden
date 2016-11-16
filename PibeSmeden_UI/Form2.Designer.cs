@@ -37,6 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox7
@@ -73,7 +75,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(30, 190);
+            this.button1.Location = new System.Drawing.Point(33, 229);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 21;
@@ -113,15 +115,34 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(21, 147);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 25;
-            this.label4.Text = "Styk/Vægt";
+            this.label4.Text = "Styk";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(21, 203);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 26;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged_1);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 187);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Vægt";
             // 
             // FormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(139, 221);
+            this.ClientSize = new System.Drawing.Size(139, 261);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -131,7 +152,7 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.MaximumSize = new System.Drawing.Size(155, 260);
+            this.MaximumSize = new System.Drawing.Size(155, 330);
             this.MinimumSize = new System.Drawing.Size(155, 260);
             this.Name = "FormAdd";
             this.ShowIcon = false;
@@ -151,5 +172,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label5;
     }
 }
