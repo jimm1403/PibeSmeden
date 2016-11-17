@@ -128,5 +128,33 @@ namespace UnitTestPibesmeden
 
             Assert.AreEqual(1, itemList.Count);
         }
+        [TestMethod]
+        public void CanRemoveAnItemFromTheList()
+        {
+            ItemRepository itemRepo = new ItemRepository();
+            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+
+            itemRepo.AddMultipleToInventoryList(items);
+            itemList = itemRepo.GetList();
+
+            itemRepo.RemoveFromInventoryList(1);
+
+            Assert.AreEqual(3, itemList.Count);
+        }
+        [TestMethod]
+        public void CanRemoveAnItemFromTheListAndStillSeeTheOthers()
+        {
+            ItemRepository itemRepo = new ItemRepository();
+            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+
+            itemRepo.AddMultipleToInventoryList(items);
+            itemList = itemRepo.GetList();
+
+            itemRepo.RemoveFromInventoryList(1);
+
+            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToStringItem());
+            Assert.AreEqual("Røg Tobak Escort White 113.95 73.00", itemList[1].ToStringItem());
+            Assert.AreEqual("Cigaretter Kings Blå 41.00 20", itemList[2].ToStringItem());
+        }
     }
 }
