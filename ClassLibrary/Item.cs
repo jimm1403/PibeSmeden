@@ -7,28 +7,39 @@ namespace ClassLibrary
 {
     public class Item
     {
-        string itemType;
+        string category;
         string brand;
         string brandType;
         double price;
         double weight;
         int pieces;
 
+        public int Pieces
+        {
+            get { return pieces; }
+            set { pieces = value; }
+        }
+        public double Weight
+        {
+            get { return weight; }
+            set { weight = value; }
+        }
+
         public Item()
         {
 
         }
-        public Item(string itemType, string brand, string brandType, double price, int pieces)
+        public Item(string category, string brand, string brandType, double price, int pieces)
         {
-            this.itemType = itemType;
+            this.category = category;
             this.brand = brand;
             this.brandType = brandType;
             this.price = price;
             this.pieces = pieces;
         }
-        public Item(string itemType, string brand, string brandType, double price, double weight)
+        public Item(string category, string brand, string brandType, double price, double weight)
         {
-            this.itemType = itemType;
+            this.category = category;
             this.brand = brand;
             this.brandType = brandType;
             this.price = price;
@@ -53,7 +64,7 @@ namespace ClassLibrary
             priceS = string.Format("{0:0.00}", price);
             priceS = priceS.Replace(',', '.');
 
-            output = itemType + " " + brand + " " + brandType + " " + priceS + " ";
+            output = category + " " + brand + " " + brandType + " " + priceS + " ";
 
             if (pieces != 0)
             {
