@@ -46,7 +46,7 @@ namespace UnitTestPibesmeden
             itemRepo.AddToInventoryList(cigaret1);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[0].ToString());
+            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[0].ToStringItem());
 
         }
         [TestMethod]
@@ -57,7 +57,7 @@ namespace UnitTestPibesmeden
             itemRepo.AddToInventoryList(roegTobak1);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToString());
+            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToStringItem());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithPieces()
@@ -68,8 +68,8 @@ namespace UnitTestPibesmeden
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[0].ToString());
-            Assert.AreEqual("Cigaretter Kings Blå 41.00 20", itemList[1].ToString());
+            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[0].ToStringItem());
+            Assert.AreEqual("Cigaretter Kings Blå 41.00 20", itemList[1].ToStringItem());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeight()
@@ -80,8 +80,8 @@ namespace UnitTestPibesmeden
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToString());
-            Assert.AreEqual("Røg Tobak Escort White 113.95 73.00", itemList[1].ToString());
+            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToStringItem());
+            Assert.AreEqual("Røg Tobak Escort White 113.95 73.00", itemList[1].ToStringItem());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeightAndPieces()
@@ -92,8 +92,8 @@ namespace UnitTestPibesmeden
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToString());
-            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[1].ToString());
+            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToStringItem());
+            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[1].ToStringItem());
         }
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingAString()

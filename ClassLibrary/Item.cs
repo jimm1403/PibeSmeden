@@ -45,18 +45,8 @@ namespace ClassLibrary
             this.price = price;
             this.weight = weight;
         }
-
-        public void AddMultipleToInventoryList(List<Item> items)
-        {
-            itemList.AddRange(items);
-        }
-
-        public List<Item> GetList()
-        {
-            return itemList;
-        }
        
-        public override string ToString() // does not support weight yet
+        public string ToStringItem()
         {
             string output;
 
