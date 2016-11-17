@@ -5,7 +5,7 @@ namespace PibeSmeden_UI
 {
     public partial class Form1 : Form
     {
-        public string itemType;
+        public string category;
 
         public Form1()
         {
@@ -14,7 +14,7 @@ namespace PibeSmeden_UI
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            itemType = ChooseProduct.Text;
+            category = ChooseProduct.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
