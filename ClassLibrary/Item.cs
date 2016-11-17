@@ -7,7 +7,6 @@ namespace ClassLibrary
 {
     public class Item
     {
-        List<Item> itemList = new List<Item>();
         string itemType;
         string brand;
         string brandType;
@@ -19,26 +18,21 @@ namespace ClassLibrary
         {
 
         }
-        public Item(string _itemType, string _brand, string _brandType, double _price, int _pieces)
+        public Item(string itemType, string brand, string brandType, double price, int pieces)
         {
-            itemType = _itemType;
-            brand = _brand;
-            brandType = _brandType;
-            price = _price;
-            pieces = _pieces;
+            this.itemType = itemType;
+            this.brand = brand;
+            this.brandType = brandType;
+            this.price = price;
+            this.pieces = pieces;
         }
-        public Item(string _itemType, string _brand, string _brandType, double _price, double _weight)
+        public Item(string itemType, string brand, string brandType, double price, double weight)
         {
-            itemType = _itemType;
-            brand = _brand;
-            brandType = _brandType;
-            price = _price;
-            weight = _weight;
-        }
-
-        public void AddToInventoryList(Item item)
-        {
-            itemList.Add(item);
+            this.itemType = itemType;
+            this.brand = brand;
+            this.brandType = brandType;
+            this.price = price;
+            this.weight = weight;
         }
 
         public void AddMultipleToInventoryList(List<Item> items)
@@ -51,7 +45,7 @@ namespace ClassLibrary
             return itemList;
         }
        
-        public override string ToString()
+        public override string ToString() // does not support weight yet
         {
             string output;
 
@@ -78,24 +72,6 @@ namespace ClassLibrary
                 throw new Exception("Pieces and weight are both 0");
             }
 
-            return output;
-        }
-
-        public List<Item> SearchAndRetrive(string searchTerm)
-        {
-            List<Item> output = new List<Item>();
-            
-                foreach (Item item in itemList)
-                {
-                    if (item.ToString().Contains(searchTerm))
-                    {
-                        output.Add(item);
-                    }
-                }
-                if (output.Count == 0)
-                {
-                    throw new Exception("Search term did not match anything");
-                }
             return output;
         }
     }
