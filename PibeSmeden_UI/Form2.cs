@@ -12,7 +12,7 @@ namespace PibeSmeden_UI
         string price;
         string pieces;
         string weight;
-        string newest;
+        public string newestItem = null;
 
         public FormAdd()
         {
@@ -51,10 +51,8 @@ namespace PibeSmeden_UI
 
         public void button1_Click(object sender, EventArgs e)
         {
-            newest = form1.category + " - " + brand + " - " + brandType + " - " + price + " - " + pieces + weight;
             Item myItem = new Item(form1.category, brand, brandType, double.Parse(price), int.Parse(pieces));
-            myItem.Weight = double.Parse(weight);
-            myItem.Pieces = int.Parse(pieces);
+            newestItem = myItem.ToStringItem();
             this.Close();
         }
 
