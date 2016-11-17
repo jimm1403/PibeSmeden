@@ -11,7 +11,7 @@ namespace PibeSmeden_UI
         string brandType;
         string price;
         string pieces;
-        string newest;
+        public string textboxAdd = null;
 
         public FormAdd()
         {
@@ -45,8 +45,8 @@ namespace PibeSmeden_UI
 
         public void button1_Click(object sender, EventArgs e)
         {
-            newest = form1.itemType + " - " + brand + " - " + brandType + " - " + price + " - " + pieces;
             Item myItem = new Item(form1.itemType, brand, brandType, double.Parse(price), int.Parse(pieces));
+            this.textboxAdd = myItem.ToString();
             this.Close();
         }
     }

@@ -21,6 +21,7 @@ namespace PibeSmeden_UI
         {
             FormAdd myForm = new FormAdd();
             myForm.ShowDialog();
+            txtChosenProduct.Text = myForm.textboxAdd;
         }
 
         public void txtChosenProduct_TextChanged(object sender, EventArgs e)
