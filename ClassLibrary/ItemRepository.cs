@@ -21,6 +21,20 @@ namespace ClassLibrary
         {
             return inventoryList;
         }
+
+        public void RemoveFromInventoryList(int index)
+        {
+            if (index <= inventoryList.Count)
+            {
+                inventoryList.RemoveAt(index);
+            }
+            else
+            {
+                throw new Exception("Tried to remove an Item that does not exist in the list");
+            }
+
+        }
+
         public List<Item> Search(string searchTerm)
         {
             List<Item> output = new List<Item>();
