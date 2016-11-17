@@ -28,7 +28,7 @@ namespace ClassLibrary
 
             foreach (Item item in inventoryList)
             {
-                if (item.ToString().Contains(searchTerm))
+                if (item.ToStringItem().Contains(searchTerm))
                 {
                     output.Add(item);
                 }
