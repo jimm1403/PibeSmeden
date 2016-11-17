@@ -51,7 +51,7 @@ namespace ClassLibrary
             return itemList;
         }
        
-        public override string ToString() // does not support weight yet
+        public override string ToString()
         {
             string output;
 
