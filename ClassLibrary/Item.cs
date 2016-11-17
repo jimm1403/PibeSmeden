@@ -13,7 +13,13 @@ namespace ClassLibrary
         double price;
         double weight;
         int pieces;
+        int amount;
 
+        public int Amount
+        {
+            get { return amount; }
+            set { amount = value; }
+        }
         public int Pieces
         {
             get { return pieces; }
@@ -45,7 +51,6 @@ namespace ClassLibrary
             this.price = price;
             this.weight = weight;
         }
-       
         public string ToStringItem()
         {
             string output;
