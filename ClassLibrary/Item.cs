@@ -59,7 +59,7 @@ namespace ClassLibrary
             priceS = string.Format("{0:0.00}", price);
             priceS = priceS.Replace(',', '.');
 
-            output = category + " " + brand + " " + brandType + " " + priceS + " ";
+            output = category + ", " + brand + ", " + brandType + ", " + priceS + ", ";
 
             if (pieces != 0)
             {
