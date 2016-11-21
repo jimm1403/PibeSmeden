@@ -129,6 +129,13 @@ namespace UnitTestPibesmeden
             Assert.AreEqual(1, itemList.Count);
         }
         [TestMethod]
+        public void CanSetAmountOfItemInInventory()
+        {
+            cigaret1.Amount = 50;
+
+            Assert.AreEqual(50, cigaret1.Amount);
+        }
+        [TestMethod]
         public void CanRemoveAnItemFromTheList()
         {
             ItemRepository itemRepo = new ItemRepository();

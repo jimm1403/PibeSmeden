@@ -32,6 +32,7 @@
             this.txtChooseProduct = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtChosenProduct = new System.Windows.Forms.TextBox();
+            this.lblTemp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ChooseProduct
@@ -90,11 +91,21 @@
             this.txtChosenProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtChosenProduct.TextChanged += new System.EventHandler(this.txtChosenProduct_TextChanged);
             // 
+            // lblTemp
+            // 
+            this.lblTemp.AutoSize = true;
+            this.lblTemp.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTemp.Location = new System.Drawing.Point(49, 115);
+            this.lblTemp.Name = "lblTemp";
+            this.lblTemp.Size = new System.Drawing.Size(0, 13);
+            this.lblTemp.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(229, 140);
+            this.Controls.Add(this.lblTemp);
             this.Controls.Add(this.txtChosenProduct);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtChooseProduct);
@@ -116,6 +127,7 @@
         private System.Windows.Forms.TextBox txtChooseProduct;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtChosenProduct;
+        private System.Windows.Forms.Label lblTemp;
     }
 }
 
