@@ -205,6 +205,56 @@ namespace UnitTestPibesmeden
 
             Assert.AreEqual("There is enough items in storage, or this item is not set to have a warning.", itemRepo.Warning(itemList[0]));
         }
+        [TestMethod]
+        public void CanIncreaseAmountOneByOne()
+        {
+            ItemRepository itemRepo = new ItemRepository();
+
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            for (int i = 0; i < 3; i++)
+            {
+                itemList[0].IncAmount();
+            }
+
+            Assert.AreEqual(3, itemList[0].Amount);
+        }
+        [TestMethod]
+        public void CanDecreasAmountOneByOne()
+        {
+            ItemRepository itemRepo = new ItemRepository();
+
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            itemList[0].Amount = 6;
+
+            for (int i = 0; i < 3; i++)
+            {
+                itemList[0].DecAmount();
+            }
+
+            Assert.AreEqual(3, itemList[0].Amount);
+        }
+        [TestMethod]
+        public void CanNotDecreasAmountOneWhenAmountIsZero()
+        {
+            ItemRepository itemRepo = new ItemRepository();
+
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            try
+            {
+                itemList[0].DecAmount();
+            }
+            catch (Exception ex)
+            {
+
+                Assert.IsTrue(ex is Exception);
+            }
+        }
     }
 }
 
