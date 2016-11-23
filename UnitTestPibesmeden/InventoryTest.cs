@@ -31,7 +31,7 @@ namespace UnitTestPibesmeden
         public void CanAddMultipleItemsToList()
         {
             ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { cigaret1, cigaret2};
+            List<Item> items = new List<Item>() { cigaret1, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
@@ -75,7 +75,7 @@ namespace UnitTestPibesmeden
         public void CanSeeMultipleItemsInListWithWeight()
         {
             ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { roegTobak1, roegTobak2};
+            List<Item> items = new List<Item>() { roegTobak1, roegTobak2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
@@ -87,7 +87,7 @@ namespace UnitTestPibesmeden
         public void CanSeeMultipleItemsInListWithWeightAndPieces()
         {
             ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1};
+            List<Item> items = new List<Item>() { roegTobak1, cigaret1 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
@@ -159,9 +159,23 @@ namespace UnitTestPibesmeden
 
             itemRepo.RemoveFromInventoryList(1);
 
-            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToStringItem());
-            Assert.AreEqual("Røg Tobak Escort White 113.95 73.00", itemList[1].ToStringItem());
-            Assert.AreEqual("Cigaretter Kings Blå 41.00 20", itemList[2].ToStringItem());
+            Assert.AreEqual("Røg Tobak, Home Roll, Menthol, 85.95 62.00", itemList[0].ToStringItem());
+            Assert.AreEqual("Røg Tobak, Escort, White, 113.95 73.00", itemList[1].ToStringItem());
+            Assert.AreEqual("Cigaretter, Kings, Blå, 41.00 20", itemList[2].ToStringItem());
+        }
+        [TestMethod]
+        public void CanReceiveAWarningWhenItemIsLow()
+        {
+            ItemRepository itemRepo = new ItemRepository();
+
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            itemList[0].Amount = 12;
+            itemList[0].WarningToogle = true;
+            itemList[0].WarningThreshold = 13;
+
+            Assert.AreEqual("Prince Light Cigaretter is running low, there is only 12 left in storage.", itemRepo.Warning(itemList[0]));
         }
     }
 }
