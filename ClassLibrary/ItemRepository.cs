@@ -17,11 +17,6 @@ namespace ClassLibrary
         {
             inventoryList.AddRange(items);
         }
-        public List<Item> GetList()
-        {
-            return inventoryList;
-        }
-
         public void RemoveFromInventoryList(int index)
         {
             if (index <= inventoryList.Count)
@@ -32,8 +27,13 @@ namespace ClassLibrary
             {
                 throw new Exception("Tried to remove an Item that does not exist in the list");
             }
-
+            
         }
+        public List<Item> GetList()
+        {
+            return inventoryList;
+        }
+
 
         public List<Item> Search(string searchTerm)
         {
@@ -52,5 +52,21 @@ namespace ClassLibrary
             }
             return output;
         }
+        public string Warning(Item item)
+        {
+            string returnstring;
+
+            if (item.WarningToogle == true && item.Amount < item.WarningThreshold)
+            {
+                returnstring = item.Brand + " " + item.BrandType + " " + item.Category + " is running low, there is only " + item.Amount + " left in storage.";
+
+                return returnstring;
+            }
+            else
+            {
+                return "There is enough items in storage, or this item is not set to have a warning.";
+            }
+        }
     }
 }
+

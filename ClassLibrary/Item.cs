@@ -14,7 +14,24 @@ namespace ClassLibrary
         double weight;
         int pieces;
         int amount;
+        bool warnignToogle;
+        int warningThreshold;
 
+        public string Category
+        {
+            get { return category; }
+            set { category = value; }
+        }
+        public string Brand
+        {
+            get { return brand; }
+            set { brand = value; }
+        }
+        public string BrandType
+        {
+            get { return brandType; }
+            set { brandType = value; }
+        }
         public int Amount
         {
             get { return amount; }
@@ -29,6 +46,16 @@ namespace ClassLibrary
         {
             get { return weight; }
             set { weight = value; }
+        }
+        public bool WarningToogle
+        {
+            get { return warnignToogle; }
+            set { warnignToogle = value; }
+        }
+        public int WarningThreshold
+        {
+            get { return warningThreshold; }
+            set { warningThreshold = value; }
         }
 
         public Item()
@@ -82,3 +109,4 @@ namespace ClassLibrary
         }
     }
 }
+
