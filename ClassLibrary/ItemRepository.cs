@@ -7,7 +7,7 @@ namespace ClassLibrary
 {
     public class ItemRepository
     {
-        List<Item> inventoryList = new List<Item>();
+        static List<Item> inventoryList = new List<Item>();
 
         public void AddToInventoryList(Item item)
         {
@@ -51,6 +51,17 @@ namespace ClassLibrary
                 throw new Exception("Search term did not match anything");
             }
             return output;
+        }
+        public List<string> ConvertItemListToStringList()
+        {
+            List<string> searchLineList = new List<string>();
+
+            foreach (Item item in inventoryList)
+            {
+                searchLineList.Add(item.ToStringItem());
+            }
+
+            return searchLineList;
         }
         public string Warning(Item item)
         {
