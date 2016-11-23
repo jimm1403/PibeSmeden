@@ -64,7 +64,7 @@ namespace ClassLibrary
             }
             else
             {
-                return "There is enough items in storage, or this item is not set to have a warning";
+                return "There is enough items in storage, or this item is not set to have a warning.";
             }
         }
     }
