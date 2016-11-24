@@ -20,42 +20,146 @@ namespace ClassLibrary
         public string Category
         {
             get { return category; }
-            set { category = value; }
-        }
+            set
+            {
+                if (value.Length != 0)
+                {
+                    category = value;
+                }
+                else
+                {
+                    throw new Exception("Catagory can not be empty");
+                }; }
+            }
         public string Brand
         {
             get { return brand; }
-            set { brand = value; }
-        }
+            set
+            {
+                if (value.Length != 0)
+                {
+                    brand = value;
+                }
+                else
+                {
+                    throw new Exception("Brand can not be empty");
+                }; }
+            }
         public string BrandType
         {
             get { return brandType; }
-            set { brandType = value; }
-        }
+            set
+            {
+                if (value.Length != 0)
+                {
+                    brandType = value;
+                }
+                else
+                {
+                    throw new Exception("Brand Type can not be empty");
+                }; }
+            }
         public int Amount
         {
             get { return amount; }
-            set { amount = value; }
-        }
+            set
+            {
+                if (value >= 0)
+                {
+                    amount = value;
+                }
+                else
+                {
+                    throw new Exception("Amount in storage can not be lower then zero");
+                }; }
+            }
         public int Pieces
         {
             get { return pieces; }
-            set { pieces = value; }
-        }
+            set
+            {
+                if (value > 0 )
+                {
+                    pieces = value;
+                }
+                else
+                {
+                    throw new Exception("There can not be zero pieces or lower");
+                }; }
+            }
         public double Weight
         {
             get { return weight; }
-            set { weight = value; }
-        }
-        public bool WarningToogle
+            set
+            {
+                if (value > 0.00)
+                {
+                    weight = value;
+                }
+                else
+                {
+                    throw new Exception("It can not weight zero or below");
+                }; }
+            }
+        public string WarningToogle
         {
-            get { return warnignToogle; }
-            set { warnignToogle = value; }
+            get
+            {
+                if (warnignToogle == true)
+                {
+                    return "On";
+                }
+                else if (warnignToogle == false)
+                {
+                    return "Off";
+                }
+                else
+                {
+                    throw new Exception("How did a bool become something other then true/false?");
+                }; }
+            set
+            {
+                if (value == "On" || value == "on")
+                {
+                    warnignToogle = true;
+                }
+                else if (value == "Off" || value == "off")
+                {
+                    warnignToogle = false;
+                }
+                else
+                {
+                    throw new Exception("Only On/Off is valid inputs - case insensitive");
+                }; }
+        }
+        public double Price
+        {
+            get { return price; }
+            set
+            {
+                if (value > 0.00)
+                {
+                    price = value;
+                }
+                else
+                {
+                    throw new Exception("It can not cost zero or lower");
+                }
+            }
         }
         public int WarningThreshold
         {
             get { return warningThreshold; }
-            set { warningThreshold = value; }
+            set
+            {
+                if (value > 0)
+                {
+                    warningThreshold = value;
+                }
+                else
+                {
+                    throw new Exception("Warning threshold can not be zero or lower");
+                }; }
         }
 
         public Item()
