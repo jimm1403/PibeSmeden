@@ -7,34 +7,184 @@ namespace ClassLibrary
 {
     public class Item
     {
-        string itemType;
+        string category;
         string brand;
         string brandType;
         double price;
         double weight;
         int pieces;
+        int amount;
+        bool warnignToogle;
+        int warningThreshold;
+
+        public string Category
+        {
+            get { return category; }
+            set
+            {
+                if (value.Length != 0)
+                {
+                    category = value;
+                }
+                else
+                {
+                    throw new Exception("Catagory can not be empty");
+                }; }
+            }
+        public string Brand
+        {
+            get { return brand; }
+            set
+            {
+                if (value.Length != 0)
+                {
+                    brand = value;
+                }
+                else
+                {
+                    throw new Exception("Brand can not be empty");
+                }; }
+            }
+        public string BrandType
+        {
+            get { return brandType; }
+            set
+            {
+                if (value.Length != 0)
+                {
+                    brandType = value;
+                }
+                else
+                {
+                    throw new Exception("Brand Type can not be empty");
+                }; }
+            }
+        public int Amount
+        {
+            get { return amount; }
+            set
+            {
+                if (value >= 0)
+                {
+                    amount = value;
+                }
+                else
+                {
+                    throw new Exception("Amount in storage can not be lower then zero");
+                }; }
+            }
+        public int Pieces
+        {
+            get { return pieces; }
+            set
+            {
+                if (value > 0 )
+                {
+                    pieces = value;
+                }
+                else
+                {
+                    throw new Exception("There can not be zero pieces or lower");
+                }; }
+            }
+        public double Weight
+        {
+            get { return weight; }
+            set
+            {
+                if (value > 0.00)
+                {
+                    weight = value;
+                }
+                else
+                {
+                    throw new Exception("It can not weight zero or below");
+                }; }
+            }
+        public string WarningToogle
+        {
+            get
+            {
+                if (warnignToogle == true)
+                {
+                    return "On";
+                }
+                else if (warnignToogle == false)
+                {
+                    return "Off";
+                }
+                else
+                {
+                    throw new Exception("How did a bool become something other then true/false?");
+                }; }
+            set
+            {
+                if (value == "On" || value == "on")
+                {
+                    warnignToogle = true;
+                }
+                else if (value == "Off" || value == "off")
+                {
+                    warnignToogle = false;
+                }
+                else
+                {
+                    throw new Exception("Only On/Off is valid inputs - case insensitive");
+                }; }
+        }
+        public double Price
+        {
+            get { return price; }
+            set
+            {
+                if (value > 0.00)
+                {
+                    price = value;
+                }
+                else
+                {
+                    throw new Exception("It can not cost zero or lower");
+                }
+            }
+        }
+        public int WarningThreshold
+        {
+            get { return warningThreshold; }
+            set
+            {
+                if (value > 0)
+                {
+                    warningThreshold = value;
+                }
+                else
+                {
+                    throw new Exception("Warning threshold can not be zero or lower");
+                }; }
+        }
 
         public Item()
         {
 
         }
-        public Item(string itemType, string brand, string brandType, double price, int pieces)
+        public Item(string category, string brand, string brandType, double price, int amount, int pieces)
         {
-            this.itemType = itemType;
+            this.category = category;
             this.brand = brand;
             this.brandType = brandType;
             this.price = price;
+            this.amount = amount;
             this.pieces = pieces;
         }
-        public Item(string itemType, string brand, string brandType, double price, double weight)
+        public Item(string category, string brand, string brandType, double price, int amount, double weight)
         {
-            this.itemType = itemType;
+            this.category = category;
             this.brand = brand;
             this.brandType = brandType;
             this.price = price;
+            this.amount = amount;
             this.weight = weight;
         }
-        public override string ToString() // does not support weight yet
+        public string ToStringItem()
         {
             string output;
 
@@ -42,7 +192,7 @@ namespace ClassLibrary
             priceS = string.Format("{0:0.00}", price);
             priceS = priceS.Replace(',', '.');
 
-            output = itemType + " " + brand + " " + brandType + " " + priceS + " ";
+            output = category + ", " + brand + ", " + brandType + ", " + priceS + ", " + amount + ", ";
 
             if (pieces != 0)
             {
@@ -63,5 +213,21 @@ namespace ClassLibrary
 
             return output;
         }
+        public void IncAmount(int incAmount)
+        {
+            amount += incAmount;
+        }
+        public void DecAmount(int decAmount)
+        {
+            if (amount >= decAmount)
+            {
+                amount -= decAmount;
+            }
+            else
+            {
+                throw new Exception("Can't go below zero");
+            }
+        }
     }
 }
+

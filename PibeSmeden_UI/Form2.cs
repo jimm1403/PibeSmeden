@@ -11,7 +11,8 @@ namespace PibeSmeden_UI
         string brandType;
         string price;
         string pieces;
-        public string textboxAdd = null;
+        string weight;
+        public string newestItem = null;
 
         public FormAdd()
         {
@@ -42,12 +43,22 @@ namespace PibeSmeden_UI
             TextBox ToEmne = (TextBox)sender;
             pieces = ToEmne.Text;
         }
+        private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+            TextBox ToEmne = (TextBox)sender;
+            weight = ToEmne.Text;
+        }
 
         public void button1_Click(object sender, EventArgs e)
         {
-            Item myItem = new Item(form1.itemType, brand, brandType, double.Parse(price), int.Parse(pieces));
-            this.textboxAdd = myItem.ToString();
+            Item myItem = new Item(form1.category, brand, brandType, double.Parse(price), int.Parse(pieces));
+            newestItem = myItem.ToStringItem();
             this.Close();
+        }
+
+        private void textBox5_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

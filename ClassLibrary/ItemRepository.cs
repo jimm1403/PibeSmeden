@@ -7,7 +7,7 @@ namespace ClassLibrary
 {
     public class ItemRepository
     {
-        List<Item> inventoryList = new List<Item>();
+        static List<Item> inventoryList = new List<Item>();
 
         public void AddToInventoryList(Item item)
         {
@@ -16,6 +16,18 @@ namespace ClassLibrary
         public void AddMultipleToInventoryList(List<Item> items)
         {
             inventoryList.AddRange(items);
+        }
+        public void RemoveFromInventoryList(int index)
+        {
+            if (index <= inventoryList.Count)
+            {
+                inventoryList.RemoveAt(index);
+            }
+            else
+            {
+                throw new Exception("Tried to remove an Item that does not exist in the list");
+            }
+            
         }
         public List<Item> GetList()
         {
@@ -28,7 +40,7 @@ namespace ClassLibrary
 
             foreach (Item item in inventoryList)
             {
-                if (item.ToString().Contains(searchTerm))
+                if (item.ToStringItem().Contains(searchTerm))
                 {
                     output.Add(item);
                 }
@@ -39,5 +51,36 @@ namespace ClassLibrary
             }
             return output;
         }
+        public List<string> ConvertItemListToStringList()
+        {
+            List<string> searchLineList = new List<string>();
+
+            foreach (Item item in inventoryList)
+            {
+                searchLineList.Add(item.ToStringItem());
+            }
+
+            return searchLineList;
+        }
+        public string Warning(Item item)
+        {
+            string returnstring;
+
+            if (item.WarningToogle == "On" && item.Amount < item.WarningThreshold)
+            {
+                returnstring = item.Brand + " " + item.BrandType + " " + item.Category + " is running low, there is only " + item.Amount + " left in storage.";
+
+                return returnstring;
+            }
+            else
+            {
+                return "There is enough items in storage, or this item is not set to have a warning.";
+            }
+        }
+        public void ClearList()
+        {
+            inventoryList.Clear();
+        }
     }
 }
+
