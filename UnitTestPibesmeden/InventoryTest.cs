@@ -17,6 +17,14 @@ namespace UnitTestPibesmeden
         Item roegTobak1 = new Item("Røg Tobak", "Home Roll", "Menthol", 85.95, 62.00);
         Item roegTobak2 = new Item("Røg Tobak", "Escort", "White", 113.95, 73.00);
 
+        [TestInitialize()]
+        public void Initialize()
+        {
+            ItemRepository itemRepo = new ItemRepository();
+
+            itemRepo.ClearList();
+        }
+
         [TestMethod]
         public void CanAddNewItemToList()
         {
@@ -172,7 +180,7 @@ namespace UnitTestPibesmeden
             itemList = itemRepo.GetList();
 
             itemList[0].Amount = 12;
-            itemList[0].WarningToogle = true;
+            itemList[0].WarningToogle = "On";
             itemList[0].WarningThreshold = 15;
 
             Assert.AreEqual("Prince Light Cigaretter is running low, there is only 12 left in storage.", itemRepo.Warning(itemList[0]));
@@ -186,7 +194,7 @@ namespace UnitTestPibesmeden
             itemList = itemRepo.GetList();
 
             itemList[0].Amount = 12;
-            itemList[0].WarningToogle = true;
+            itemList[0].WarningToogle = "On";
             itemList[0].WarningThreshold = 10;
 
             Assert.AreEqual("There is enough items in storage, or this item is not set to have a warning.", itemRepo.Warning(itemList[0]));
@@ -200,7 +208,7 @@ namespace UnitTestPibesmeden
             itemList = itemRepo.GetList();
 
             itemList[0].Amount = 12;
-            itemList[0].WarningToogle = false;
+            itemList[0].WarningToogle = "Off";
             itemList[0].WarningThreshold = 15;
 
             Assert.AreEqual("There is enough items in storage, or this item is not set to have a warning.", itemRepo.Warning(itemList[0]));
@@ -251,7 +259,112 @@ namespace UnitTestPibesmeden
             }
             catch (Exception ex)
             {
+                Assert.IsTrue(ex is Exception);
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithEmptyCatagory()
+        {
+            try
+            {
+                Item test = new Item("", "Prince", "Light", 666.66, 100 );
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex is Exception);
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithEmptyBrand()
+        {
+            try
+            {
+                Item test = new Item("Cigaretter", "", "Light", 666.66, 100);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex is Exception);
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithEmptyBrandType()
+        {
+            try
+            {
+                Item test = new Item("Cigaretter", "Prince", "", 666.66, 100);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex is Exception);
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithAPriceOfZero()
+        {
+            try
+            {
+                Item test = new Item("Cigaretter", "Prince", "Light", 0.00, 100);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex is Exception);
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithZeroPieces()
+        {
+            try
+            {
+                Item test = new Item("Cigaretter", "Prince", "Light", 666.66, 0);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex is Exception);
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithZeroWeight()
+        {
+            try
+            {
+                Item test = new Item("Cigaretter", "Prince", "Light", 666.66, 0.00);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex is Exception);
+            }
+        }
+        [TestMethod]
+        public void CanNotSetWarningThresholdToZeroOrLess()
+        {
+            ItemRepository itemRepo = new ItemRepository();
 
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            try
+            {
+                itemList[0].WarningThreshold = 0;
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex is Exception);
+            }
+        }
+        [TestMethod]
+        public void CanNotSetAmountToLessThenZero()
+        {
+            ItemRepository itemRepo = new ItemRepository();
+
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            try
+            {
+                itemList[0].Amount = -1;
+            }
+            catch (Exception ex)
+            {
                 Assert.IsTrue(ex is Exception);
             }
         }

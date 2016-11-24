@@ -34,7 +34,6 @@ namespace ClassLibrary
             return inventoryList;
         }
 
-
         public List<Item> Search(string searchTerm)
         {
             List<Item> output = new List<Item>();
@@ -67,7 +66,7 @@ namespace ClassLibrary
         {
             string returnstring;
 
-            if (item.WarningToogle == true && item.Amount < item.WarningThreshold)
+            if (item.WarningToogle == "On" && item.Amount < item.WarningThreshold)
             {
                 returnstring = item.Brand + " " + item.BrandType + " " + item.Category + " is running low, there is only " + item.Amount + " left in storage.";
 
@@ -77,6 +76,10 @@ namespace ClassLibrary
             {
                 return "There is enough items in storage, or this item is not set to have a warning.";
             }
+        }
+        public void ClearList()
+        {
+            inventoryList.Clear();
         }
     }
 }
