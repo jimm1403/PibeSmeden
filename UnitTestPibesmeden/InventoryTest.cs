@@ -11,7 +11,7 @@ namespace UnitTestPibesmeden
     {
         //ændre her under
         List<Item> itemList;
-        Item dummy = new Item("Dummy", "Dummy", "Dummy", 0.00, 0, 0);
+        Item dummy = new Item("Dummy", "Dummy", "Dummy", 0.01, 0, 1);
         Item cigaret1 = new Item("Cigaretter", "Prince", "Light", 44.00, 200, 20);
         Item cigaret2 = new Item("Cigaretter", "Kings", "Blå", 41.00, 200, 20);
         Item roegTobak1 = new Item("Røg Tobak", "Home Roll", "Menthol", 85.95, 100, 62.00);
