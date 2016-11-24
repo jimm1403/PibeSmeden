@@ -107,7 +107,21 @@ namespace ClassLibrary
 
             return output;
         }
-        
+        public void IncAmount()
+        {
+            Amount++;
+        }
+        public void DecAmount()
+        {
+            if (Amount != 0)
+            {
+                Amount--;
+            }
+            else
+            {
+                throw new Exception("Can't go below zero");
+            }
+        }
     }
 }
 
