@@ -6,6 +6,7 @@ namespace UserInterface
 {
     public partial class FormAdd : Form
     {
+        ItemRepository itemRepo = new ItemRepository();
         Form1 form1 = new Form1();
         string category;
         string brand;
@@ -23,8 +24,18 @@ namespace UserInterface
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            Item myItem = new Item(category, brand, brandType, double.Parse(price), int.Parse(pieces));
-            newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: "+amount;
+            if (category == "Cigaretter" || category == "Rullepapir" || category == "Filtre" || category == "Cigar" || category == "Tobak Pastiller")
+            {
+                Item myItem = new Item(category, brand, brandType, double.Parse(price), int.Parse(pieces));
+                itemRepo.AddToInventoryList(myItem);
+                newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
+            }
+            else
+            {
+                Item myItem = new Item(category, brand, brandType, double.Parse(price), double.Parse(weight));
+                itemRepo.AddToInventoryList(myItem);
+                newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
+            }
             this.Close();
         }
 
