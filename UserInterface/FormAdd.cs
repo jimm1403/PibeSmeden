@@ -21,24 +21,24 @@ namespace UserInterface
         {
             InitializeComponent();
         }
-
+        
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             if (category == "Cigaretter" || category == "Rullepapir" || category == "Filtre" || category == "Cigar" || category == "Tobak Pastiller")
             {
-                Item myItem = new Item(category, brand, brandType, double.Parse(price), int.Parse(pieces));
+                Item myItem = new Item(category, brand, brandType, double.Parse(price), int.Parse(amount), int.Parse(pieces));
                 itemRepo.AddToInventoryList(myItem);
                 newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
             }
             else
             {
-                Item myItem = new Item(category, brand, brandType, double.Parse(price), double.Parse(weight));
+                Item myItem = new Item(category, brand, brandType, double.Parse(price), int.Parse(amount), double.Parse(weight));
                 itemRepo.AddToInventoryList(myItem);
                 newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
             }
             this.Close();
         }
-
+        
         private void txtBrand_TextChanged(object sender, EventArgs e)
         {
             TextBox ToEmne = (TextBox)sender;

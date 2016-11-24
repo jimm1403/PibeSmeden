@@ -166,20 +166,22 @@ namespace ClassLibrary
         {
 
         }
-        public Item(string category, string brand, string brandType, double price, int pieces)
+        public Item(string category, string brand, string brandType, double price, int amount, int pieces)
         {
             this.category = category;
             this.brand = brand;
             this.brandType = brandType;
             this.price = price;
+            this.amount = amount;
             this.pieces = pieces;
         }
-        public Item(string category, string brand, string brandType, double price, double weight)
+        public Item(string category, string brand, string brandType, double price, int amount, double weight)
         {
             this.category = category;
             this.brand = brand;
             this.brandType = brandType;
             this.price = price;
+            this.amount = amount;
             this.weight = weight;
         }
         public string ToStringItem()
@@ -190,7 +192,7 @@ namespace ClassLibrary
             priceS = string.Format("{0:0.00}", price);
             priceS = priceS.Replace(',', '.');
 
-            output = category + ", " + brand + ", " + brandType + ", " + priceS + ", ";
+            output = category + ", " + brand + ", " + brandType + ", " + priceS + ", " + amount + ", ";
 
             if (pieces != 0)
             {
@@ -211,15 +213,15 @@ namespace ClassLibrary
 
             return output;
         }
-        public void IncAmount()
+        public void IncAmount(int incAmount)
         {
-            Amount++;
+            amount += incAmount;
         }
-        public void DecAmount()
+        public void DecAmount(int decAmount)
         {
-            if (Amount != 0)
+            if (amount >= decAmount)
             {
-                Amount--;
+                amount -= decAmount;
             }
             else
             {
