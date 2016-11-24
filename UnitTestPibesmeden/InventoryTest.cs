@@ -9,14 +9,14 @@ namespace UnitTestPibesmeden
     [TestClass]
     public class InventoryTest
     {
-
+        //ændre her under
         List<Item> itemList;
-        Item dummy = new Item("Dummy", "Dummy", "Dummy", 0.00, 0);
-        Item cigaret1 = new Item("Cigaretter", "Prince", "Light", 44.00, 20);
-        Item cigaret2 = new Item("Cigaretter", "Kings", "Blå", 41.00, 20);
-        Item roegTobak1 = new Item("Røg Tobak", "Home Roll", "Menthol", 85.95, 62.00);
-        Item roegTobak2 = new Item("Røg Tobak", "Escort", "White", 113.95, 73.00);
-
+        Item dummy = new Item("Dummy", "Dummy", "Dummy", 0.00, 0, 0);
+        Item cigaret1 = new Item("Cigaretter", "Prince", "Light", 44.00, 200, 20);
+        Item cigaret2 = new Item("Cigaretter", "Kings", "Blå", 41.00, 200, 20);
+        Item roegTobak1 = new Item("Røg Tobak", "Home Roll", "Menthol", 85.95, 100, 62.00);
+        Item roegTobak2 = new Item("Røg Tobak", "Escort", "White", 113.95, 100, 73.00);
+        //
         [TestInitialize()]
         public void Initialize()
         {
@@ -213,6 +213,7 @@ namespace UnitTestPibesmeden
 
             Assert.AreEqual("There is enough items in storage, or this item is not set to have a warning.", itemRepo.Warning(itemList[0]));
         }
+        /*
         [TestMethod]
         public void CanIncreaseAmountOneByOne()
         {
@@ -262,12 +263,13 @@ namespace UnitTestPibesmeden
                 Assert.IsTrue(ex is Exception);
             }
         }
+        */
         [TestMethod]
         public void CanNotMakeNewItemWithEmptyCatagory()
         {
             try
             {
-                Item test = new Item("", "Prince", "Light", 666.66, 100 );
+                Item test = new Item("", "Prince", "Light", 666.66, 200, 100 );
             }
             catch (Exception ex)
             {
@@ -279,7 +281,7 @@ namespace UnitTestPibesmeden
         {
             try
             {
-                Item test = new Item("Cigaretter", "", "Light", 666.66, 100);
+                Item test = new Item("Cigaretter", "", "Light", 666.66, 200, 100);
             }
             catch (Exception ex)
             {
@@ -291,7 +293,7 @@ namespace UnitTestPibesmeden
         {
             try
             {
-                Item test = new Item("Cigaretter", "Prince", "", 666.66, 100);
+                Item test = new Item("Cigaretter", "Prince", "", 666.66, 200, 100);
             }
             catch (Exception ex)
             {
@@ -303,7 +305,7 @@ namespace UnitTestPibesmeden
         {
             try
             {
-                Item test = new Item("Cigaretter", "Prince", "Light", 0.00, 100);
+                Item test = new Item("Cigaretter", "Prince", "Light", 0.00, 200, 100);
             }
             catch (Exception ex)
             {
@@ -315,7 +317,7 @@ namespace UnitTestPibesmeden
         {
             try
             {
-                Item test = new Item("Cigaretter", "Prince", "Light", 666.66, 0);
+                Item test = new Item("Cigaretter", "Prince", "Light", 666.66, 200, 0);
             }
             catch (Exception ex)
             {
@@ -327,7 +329,7 @@ namespace UnitTestPibesmeden
         {
             try
             {
-                Item test = new Item("Cigaretter", "Prince", "Light", 666.66, 0.00);
+                Item test = new Item("Cigaretter", "Prince", "Light", 666.66, 200, 0.00);
             }
             catch (Exception ex)
             {
