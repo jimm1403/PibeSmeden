@@ -35,6 +35,8 @@ namespace UserInterface
                 itemList[selectedItem].IncAmount(incAmount);
             }
             IncTextBox.Clear();
+            List<string> stringList = itemRepo.ConvertItemListToStringList();
+            InventoryListBox.DataSource = stringList;
         }
         private void DecButton_Click(object sender, EventArgs e)
         {
@@ -46,6 +48,8 @@ namespace UserInterface
                 itemList[selectedItem].DecAmount(decAmount);
             }
             DecTextBox.Clear();
+            List<string> stringList = itemRepo.ConvertItemListToStringList();
+            InventoryListBox.DataSource = stringList;
         }
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
