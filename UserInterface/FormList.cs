@@ -13,6 +13,7 @@ namespace UserInterface
 {
     public partial class FormList : Form
     {
+        string searchWord;
         ItemRepository itemRepo = new ItemRepository();
         public FormList()
         {
@@ -46,6 +47,23 @@ namespace UserInterface
             }
             DecTextBox.Clear();
         }
-        
+
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox ToEmne = (TextBox)sender;
+            searchWord = ToEmne.Text;
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            List<Item> itemList = itemRepo.Search(searchWord);
+            List<string> searchList = new List<string>();
+            foreach (Item item in itemList)
+            {
+                searchList.Add(item.ToStringItem());
+            }
+
+            InventoryListBox.DataSource = searchList;
+        }
     }
 }
