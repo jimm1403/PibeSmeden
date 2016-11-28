@@ -9,10 +9,9 @@ namespace UserInterface
         ItemRepository itemRepo = new ItemRepository();
         Form1 form1 = new Form1();
         string category;
-        string brand;
-        string brandType;
-        string price;
-        string pieces;
+        string name;
+        string salesPrice;
+        string marketPrice;
         string weight;
         string amount;
         public string newestItem = null;
@@ -26,13 +25,13 @@ namespace UserInterface
         {
             if (category == "Cigaretter" || category == "Rullepapir" || category == "Filtre" || category == "Cigar" || category == "Tobak Pastiller")
             {
-                Item myItem = new Item(category, brand, brandType, double.Parse(price), int.Parse(amount), int.Parse(pieces));
+                Item myItem = new Item(category, name, double.Parse(salesPrice), double.Parse(marketPrice), int.Parse(amount));
                 itemRepo.AddToInventoryList(myItem);
                 newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
             }
             else
             {
-                Item myItem = new Item(category, brand, brandType, double.Parse(price), int.Parse(amount), double.Parse(weight));
+                Item myItem = new Item(category, name, double.Parse(salesPrice), double.Parse(marketPrice), int.Parse(amount), double.Parse(weight));
                 itemRepo.AddToInventoryList(myItem);
                 newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
             }
@@ -42,22 +41,18 @@ namespace UserInterface
         private void txtBrand_TextChanged(object sender, EventArgs e)
         {
             TextBox ToEmne = (TextBox)sender;
-            brand = ToEmne.Text;
+            name = ToEmne.Text;
         }
-        private void txtBrandType_TextChanged(object sender, EventArgs e)
-        {
-            TextBox ToEmne = (TextBox)sender;
-            brandType = ToEmne.Text;
-        }
+        
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
             TextBox ToEmne = (TextBox)sender;
-            price = ToEmne.Text;
+            salesPrice = ToEmne.Text;
         }
-        private void txtPieces_TextChanged(object sender, EventArgs e)
+        private void txtMarketPrice_TextChanged(object sender, EventArgs e)
         {
             TextBox ToEmne = (TextBox)sender;
-            pieces = ToEmne.Text;
+            marketPrice = ToEmne.Text;
         }
         private void txtWeight_TextChanged(object sender, EventArgs e)
         {
@@ -74,15 +69,15 @@ namespace UserInterface
         {
             category = comboCategory.Text;
             if (category == "Røg Tobak")
-            {
-                txtPieces.Enabled = false;
+            { 
                 txtWeight.Enabled = true;
             }
             else
             {
-                txtPieces.Enabled = true;
                 txtWeight.Enabled = false;
             }
         }
+
+       
     }
 }

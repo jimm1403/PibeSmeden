@@ -68,7 +68,7 @@ namespace ClassLibrary
 
             if (item.WarningToogle == "On" && item.Amount < item.WarningThreshold)
             {
-                returnstring = item.Brand + " " + item.BrandType + " " + item.Category + " is running low, there is only " + item.Amount + " left in storage.";
+                returnstring = item.Name + " " + item.Category + " is running low, there is only " + item.Amount + " left in storage.";
 
                 return returnstring;
             }
