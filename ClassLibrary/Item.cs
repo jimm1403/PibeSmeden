@@ -8,11 +8,10 @@ namespace ClassLibrary
     public class Item
     {
         string category;
-        string brand;
-        string brandType;
-        double price;
+        string name;
+        double salesPrice;
+        double marketPrice;
         double weight;
-        int pieces;
         int amount;
         bool warnignToogle;
         int warningThreshold;
@@ -31,32 +30,18 @@ namespace ClassLibrary
                     throw new Exception("Catagory can not be empty");
                 }; }
             }
-        public string Brand
+        public string Name
         {
-            get { return brand; }
+            get { return name; }
             set
             {
                 if (value.Length != 0)
                 {
-                    brand = value;
+                    name = value;
                 }
                 else
                 {
-                    throw new Exception("Brand can not be empty");
-                }; }
-            }
-        public string BrandType
-        {
-            get { return brandType; }
-            set
-            {
-                if (value.Length != 0)
-                {
-                    brandType = value;
-                }
-                else
-                {
-                    throw new Exception("Brand Type can not be empty");
+                    throw new Exception("Name can not be empty");
                 }; }
             }
         public int Amount
@@ -71,20 +56,6 @@ namespace ClassLibrary
                 else
                 {
                     throw new Exception("Amount in storage can not be lower then zero");
-                }; }
-            }
-        public int Pieces
-        {
-            get { return pieces; }
-            set
-            {
-                if (value > 0 )
-                {
-                    pieces = value;
-                }
-                else
-                {
-                    throw new Exception("There can not be zero pieces or lower");
                 }; }
             }
         public double Weight
@@ -132,14 +103,29 @@ namespace ClassLibrary
                     throw new Exception("Only On/Off is valid inputs - case insensitive");
                 }; }
         }
-        public double Price
+        public double SalesPrice
         {
-            get { return price; }
+            get { return salesPrice; }
             set
             {
                 if (value > 0.00)
                 {
-                    price = value;
+                    salesPrice = value;
+                }
+                else
+                {
+                    throw new Exception("It can not cost zero or lower");
+                }
+            }
+        }
+        public double MarketPrice
+        {
+            get { return marketPrice; }
+            set
+            {
+                if (value > 0.00)
+                {
+                    marketPrice = value;
                 }
                 else
                 {
@@ -166,21 +152,20 @@ namespace ClassLibrary
         {
 
         }
-        public Item(string category, string brand, string brandType, double price, int amount, int pieces)
+        public Item(string category, string name, double salesPrice, double marketPrice, int amount)
         {
             this.category = category;
-            this.brand = brand;
-            this.brandType = brandType;
-            this.price = price;
+            this.name = name;
+            this.salesPrice = salesPrice;
+            this.marketPrice = marketPrice;
             this.amount = amount;
-            this.pieces = pieces;
         }
-        public Item(string category, string brand, string brandType, double price, int amount, double weight)
+        public Item(string category, string name, double salesPrice, double marketPrice, int amount, double weight)
         {
             this.category = category;
-            this.brand = brand;
-            this.brandType = brandType;
-            this.price = price;
+            this.name = name;
+            this.salesPrice = salesPrice;
+            this.marketPrice = marketPrice;
             this.amount = amount;
             this.weight = weight;
         }
@@ -188,8 +173,8 @@ namespace ClassLibrary
         {
             string output;
 
-            string priceS = "" + price;
-            priceS = string.Format("{0:0.00}", price);
+            string priceS = "" + salesPrice;
+            priceS = string.Format("{0:0.00}", salesPrice);
             priceS = priceS.Replace(',', '.');
 
             output = category + ", " + brand + ", " + brandType + ", " + priceS + ", " + amount + ", ";
