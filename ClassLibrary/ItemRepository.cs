@@ -38,9 +38,11 @@ namespace ClassLibrary
         {
             List<Item> output = new List<Item>();
 
+            string searchTermLow = searchTerm.ToLower();
+
             foreach (Item item in inventoryList)
             {
-                if (item.ToStringItem().Contains(searchTerm))
+                if (item.ToStringItem().ToLower().Contains(searchTermLow))
                 {
                     output.Add(item);
                 }
