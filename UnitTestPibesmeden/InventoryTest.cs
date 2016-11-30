@@ -316,6 +316,24 @@ namespace UnitTestPibesmeden
                 Assert.IsTrue(ex is Exception);
             }
         }
+        [TestMethod]
+        public void CanNotAddTheSameItemMultipleTimes()
+        {
+            List<Item> items = new List<Item>() { dummy, dummy, dummy, dummy, dummy};
+
+            try
+            {
+                itemRepo.AddMultipleToInventoryList(items);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("4 input item(s) already exists, only added 1 out of a total of 5"));
+            }
+
+            itemList = itemRepo.GetList();
+
+            Assert.AreEqual(1, itemList.Count);
+        }
     }
 }
 
