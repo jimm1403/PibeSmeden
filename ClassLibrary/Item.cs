@@ -15,12 +15,17 @@ namespace ClassLibrary
         int amount;
         bool warnignToogle;
         int warningThreshold;
+        int warningCountdown;
 
         public string Category
         {
             get { return category; }
             set
             {
+                if (value == null)
+                {
+                    value = "";
+                }
                 if (value.Length != 0)
                 {
                     category = value;
@@ -35,6 +40,10 @@ namespace ClassLibrary
             get { return name; }
             set
             {
+                if (value == null)
+                {
+                    value = "";
+                }
                 if (value.Length != 0)
                 {
                     name = value;
@@ -42,8 +51,9 @@ namespace ClassLibrary
                 else
                 {
                     throw new Exception("Name can not be empty");
-                }; }
+                };
             }
+        }
         public int Amount
         {
             get { return amount; }
@@ -148,6 +158,17 @@ namespace ClassLibrary
                 }; }
         }
 
+<<<<<<< HEAD
+=======
+        public int WarningCountdown
+        {
+            get { return warningCountdown; }
+            set
+            {
+                warningCountdown = value;
+            }
+        }
+>>>>>>> refs/remotes/origin/Christian-Branch
 
         public Item()
         {
@@ -182,9 +203,8 @@ namespace ClassLibrary
             marketPriceS = string.Format("{0:0.00}", marketPrice);
             marketPriceS = marketPriceS.Replace(',', '.');
 
-            output = category + ", " + name + ", " + salesPriceS + " DKK, " + marketPriceS + " DKK, " + amount + " Stk";
+                output = category + ", " + name + ", " + salesPriceS + " DKK, " + marketPriceS + " DKK, " + amount + " Stk";
 
-            
             if (weight != 0)
             {
                 string weightS = "" + weight;
@@ -193,7 +213,14 @@ namespace ClassLibrary
 
                 output = output + ", " + weightS + " g";
             }
-            
+
+            warningCountdown = amount - warningThreshold;
+
+            if (warningCountdown <= 0)
+            {
+                output = output + " - LAV BEHOLDNING!";
+            }
+
 
             return output;
         }
