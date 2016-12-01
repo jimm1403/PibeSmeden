@@ -148,26 +148,27 @@ namespace ClassLibrary
                 }; }
         }
 
+
         public Item()
         {
 
         }
         public Item(string category, string name, double salesPrice, double marketPrice, int amount)
         {
-            this.category = category;
-            this.name = name;
-            this.salesPrice = salesPrice;
-            this.marketPrice = marketPrice;
-            this.amount = amount;
+            Category = category;
+            Name = name;
+            SalesPrice = salesPrice;
+            MarketPrice = marketPrice;
+            Amount = amount;
         }
         public Item(string category, string name, double salesPrice, double marketPrice, int amount, double weight)
         {
-            this.category = category;
-            this.name = name;
-            this.salesPrice = salesPrice;
-            this.marketPrice = marketPrice;
-            this.amount = amount;
-            this.weight = weight;
+            Category = category;
+            Name = name;
+            SalesPrice = salesPrice;
+            MarketPrice = marketPrice;
+            Amount = amount;
+            Weight = weight;
         }
         public string ToStringItem()
         {

@@ -64,7 +64,6 @@ namespace ClassLibrary
         {
             return inventoryList;
         }
-
         public List<Item> Search(string searchTerm)
         {
             List<Item> output = new List<Item>();
