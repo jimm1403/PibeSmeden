@@ -158,17 +158,12 @@ namespace ClassLibrary
                 }; }
         }
 
-<<<<<<< HEAD
-=======
+
         public int WarningCountdown
         {
             get { return warningCountdown; }
-            set
-            {
-                warningCountdown = value;
-            }
+            set { warningCountdown = value; }
         }
->>>>>>> refs/remotes/origin/Christian-Branch
 
         public Item()
         {
@@ -203,7 +198,7 @@ namespace ClassLibrary
             marketPriceS = string.Format("{0:0.00}", marketPrice);
             marketPriceS = marketPriceS.Replace(',', '.');
 
-                output = category + ", " + name + ", " + salesPriceS + " DKK, " + marketPriceS + " DKK, " + amount + " Stk";
+            output = category + ", " + name + ", " + salesPriceS + " DKK, " + marketPriceS + " DKK, " + amount + " Stk";
 
             if (weight != 0)
             {
@@ -220,7 +215,6 @@ namespace ClassLibrary
             {
                 output = output + " - LAV BEHOLDNING!";
             }
-
 
             return output;
         }
