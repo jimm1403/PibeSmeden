@@ -223,7 +223,7 @@ namespace UnitTestPibesmeden
             }
             catch (Exception ex)
             {
-                Assert.IsTrue(ex is Exception);
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("can't go below zero"));
             }
         }
         [TestMethod]
@@ -235,7 +235,7 @@ namespace UnitTestPibesmeden
             }
             catch (Exception ex)
             {
-                Assert.IsTrue(ex is Exception);
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("catagory can not be empty"));
             }
         }
         [TestMethod]
@@ -247,7 +247,7 @@ namespace UnitTestPibesmeden
             }
             catch (Exception ex)
             {
-                Assert.IsTrue(ex is Exception);
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("name can not be empty"));
             }
         }
         [TestMethod]
@@ -259,7 +259,7 @@ namespace UnitTestPibesmeden
             }
             catch (Exception ex)
             {
-                Assert.IsTrue(ex is Exception);
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("it can not cost zero or lower"));
             }
         }
         [TestMethod]
@@ -271,7 +271,7 @@ namespace UnitTestPibesmeden
             }
             catch (Exception ex)
             {
-                Assert.IsTrue(ex is Exception);
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("it can not cost zero or lower"));
             }
         }
         [TestMethod]
@@ -283,7 +283,7 @@ namespace UnitTestPibesmeden
             }
             catch (Exception ex)
             {
-                Assert.IsTrue(ex is Exception);
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("it can not weight zero or below"));
             }
         }
         [TestMethod]
@@ -298,7 +298,7 @@ namespace UnitTestPibesmeden
             }
             catch (Exception ex)
             {
-                Assert.IsTrue(ex is Exception);
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("warning threshold can not be zero or lower"));
             }
         }
         [TestMethod]
@@ -313,7 +313,7 @@ namespace UnitTestPibesmeden
             }
             catch (Exception ex)
             {
-                Assert.IsTrue(ex is Exception);
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("amount in storage can not be lower then zero"));
             }
         }
         [TestMethod]
