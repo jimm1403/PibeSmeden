@@ -11,11 +11,42 @@ namespace ClassLibrary
 
         public void AddToInventoryList(Item item)
         {
-            inventoryList.Add(item);
+            try
+            {
+                if (Search(item.Name).Count > 0)
+                {
+                    throw new Exception("Input item already exists");
+                }
+            }
+            catch (Exception)
+            {
+                inventoryList.Add(item);
+            }
         }
         public void AddMultipleToInventoryList(List<Item> items)
         {
-            inventoryList.AddRange(items);
+            int alreadyExisting = 0;
+            int addedItemsCount = 0;
+
+            foreach (Item item in items)
+            {
+                try
+                {
+                    if (Search(item.Name).Count > 0)
+                    {
+                        alreadyExisting++;
+                    }
+                }
+                catch (Exception)
+                {
+                    inventoryList.Add(item);
+                    addedItemsCount++;
+                }
+            }
+            if (alreadyExisting > 0)
+            {
+                throw new Exception(alreadyExisting + " Input item(s) already exists, only added " + addedItemsCount + " out of a total of " + items.Count);
+            }
         }
         public void RemoveFromInventoryList(int index)
         {
@@ -38,9 +69,11 @@ namespace ClassLibrary
         {
             List<Item> output = new List<Item>();
 
+            string searchTermLow = searchTerm.ToLower();
+
             foreach (Item item in inventoryList)
             {
-                if (item.ToStringItem().Contains(searchTerm))
+                if (item.ToStringItem().ToLower().Contains(searchTermLow))
                 {
                     output.Add(item);
                 }
