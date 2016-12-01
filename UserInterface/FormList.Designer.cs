@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.InventoryListBox = new System.Windows.Forms.ListBox();
             this.IncButton = new System.Windows.Forms.Button();
             this.DecButton = new System.Windows.Forms.Button();
@@ -38,22 +37,12 @@
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(13, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Vis Lager";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // InventoryListBox
             // 
             this.InventoryListBox.FormattingEnabled = true;
-            this.InventoryListBox.Location = new System.Drawing.Point(13, 43);
+            this.InventoryListBox.Location = new System.Drawing.Point(13, 4);
             this.InventoryListBox.Name = "InventoryListBox";
-            this.InventoryListBox.Size = new System.Drawing.Size(259, 212);
+            this.InventoryListBox.Size = new System.Drawing.Size(259, 251);
             this.InventoryListBox.TabIndex = 1;
             // 
             // IncButton
@@ -120,7 +109,6 @@
             this.Controls.Add(this.DecButton);
             this.Controls.Add(this.IncButton);
             this.Controls.Add(this.InventoryListBox);
-            this.Controls.Add(this.button1);
             this.MaximumSize = new System.Drawing.Size(456, 300);
             this.MinimumSize = new System.Drawing.Size(456, 300);
             this.Name = "FormList";
@@ -131,8 +119,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox InventoryListBox;
         private System.Windows.Forms.Button IncButton;
         private System.Windows.Forms.Button DecButton;

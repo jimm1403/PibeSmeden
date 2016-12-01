@@ -72,7 +72,7 @@
             this.txtSalesPrice.Location = new System.Drawing.Point(11, 112);
             this.txtSalesPrice.Name = "txtSalesPrice";
             this.txtSalesPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtSalesPrice.TabIndex = 3;
+            this.txtSalesPrice.TabIndex = 2;
             this.txtSalesPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             // 
             // txtWeight
@@ -80,7 +80,7 @@
             this.txtWeight.Location = new System.Drawing.Point(11, 192);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(100, 20);
-            this.txtWeight.TabIndex = 5;
+            this.txtWeight.TabIndex = 4;
             this.txtWeight.TextChanged += new System.EventHandler(this.txtWeight_TextChanged);
             // 
             // txtAmount
@@ -88,7 +88,7 @@
             this.txtAmount.Location = new System.Drawing.Point(11, 231);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(100, 20);
-            this.txtAmount.TabIndex = 6;
+            this.txtAmount.TabIndex = 5;
             this.txtAmount.TextChanged += new System.EventHandler(this.txtAmount_TextChanged);
             // 
             // lblCategory
@@ -141,7 +141,7 @@
             this.btnAddItem.Location = new System.Drawing.Point(24, 257);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(75, 23);
-            this.btnAddItem.TabIndex = 14;
+            this.btnAddItem.TabIndex = 6;
             this.btnAddItem.Text = "Tilføj";
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
@@ -151,7 +151,7 @@
             this.txtMarketPrice.Location = new System.Drawing.Point(11, 151);
             this.txtMarketPrice.Name = "txtMarketPrice";
             this.txtMarketPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtMarketPrice.TabIndex = 15;
+            this.txtMarketPrice.TabIndex = 3;
             this.txtMarketPrice.TextChanged += new System.EventHandler(this.txtMarketPrice_TextChanged);
             // 
             // lblMarketPrice
