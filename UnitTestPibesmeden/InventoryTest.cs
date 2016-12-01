@@ -11,11 +11,11 @@ namespace UnitTestPibesmeden
     {
         //ændre her under
         List<Item> itemList;
-        Item dummy = new Item("Dummy", "Dummy", "Dummy", 0.01, 0, 1);
-        Item cigaret1 = new Item("Cigaretter", "Prince", "Light", 44.00, 200, 20);
-        Item cigaret2 = new Item("Cigaretter", "Kings", "Blå", 41.00, 200, 20);
-        Item roegTobak1 = new Item("Røg Tobak", "Home Roll", "Menthol", 85.95, 100, 62.00);
-        Item roegTobak2 = new Item("Røg Tobak", "Escort", "White", 113.95, 100, 73.00);
+        Item dummy = new Item("Dummy", "Dummy", 0.01, 0.01, 0, 1);
+        Item cigaret1 = new Item("Cigaretter", "Prince", 44.00, 30.00, 200);
+        Item cigaret2 = new Item("Cigaretter", "Kings", 41.00, 27.00 , 200);
+        Item roegTobak1 = new Item("Tobak", "Home Roll", 85.95, 71.95, 100, 62.00);
+        Item roegTobak2 = new Item("Tobak", "Escort", 113.95, 99.95, 100, 73.00);
         ItemRepository itemRepo = new ItemRepository();
         //
         [TestInitialize()]
@@ -48,7 +48,7 @@ namespace UnitTestPibesmeden
             itemRepo.AddToInventoryList(cigaret1);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Cigaretter, Prince, Light, 44.00, 200, 20", itemList[0].ToStringItem());
+            Assert.AreEqual("Cigaretter, Prince, 44.00 DKK, 30.00 DKK, 200 Stk", itemList[0].ToStringItem());
 
         }
         [TestMethod]
@@ -57,7 +57,7 @@ namespace UnitTestPibesmeden
             itemRepo.AddToInventoryList(roegTobak1);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Røg Tobak, Home Roll, Menthol, 85.95, 100, 62.00", itemList[0].ToStringItem());
+            Assert.AreEqual("Tobak, Home Roll, 85.95 DKK, 71.95 DKK, 100 Stk, 62.00 g", itemList[0].ToStringItem());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithPieces()
@@ -67,8 +67,8 @@ namespace UnitTestPibesmeden
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Cigaretter, Prince, Light, 44.00, 200, 20", itemList[0].ToStringItem());
-            Assert.AreEqual("Cigaretter, Kings, Blå, 41.00, 200, 20", itemList[1].ToStringItem());
+            Assert.AreEqual("Cigaretter, Prince, 44.00 DKK, 30.00 DKK, 200 Stk", itemList[0].ToStringItem());
+            Assert.AreEqual("Cigaretter, Kings, 41.00 DKK, 27.00 DKK, 200 Stk", itemList[1].ToStringItem());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeight()
@@ -78,8 +78,8 @@ namespace UnitTestPibesmeden
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Røg Tobak, Home Roll, Menthol, 85.95, 100, 62.00", itemList[0].ToStringItem());
-            Assert.AreEqual("Røg Tobak, Escort, White, 113.95, 100, 73.00", itemList[1].ToStringItem());
+            Assert.AreEqual("Tobak, Home Roll, 85.95 DKK, 71.95 DKK, 100 Stk, 62.00 g", itemList[0].ToStringItem());
+            Assert.AreEqual("Tobak, Escort, 113.95 DKK, 99.95 DKK, 100 Stk, 73.00 g", itemList[1].ToStringItem());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeightAndPieces()
@@ -89,8 +89,8 @@ namespace UnitTestPibesmeden
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Røg Tobak, Home Roll, Menthol, 85.95, 100, 62.00", itemList[0].ToStringItem());
-            Assert.AreEqual("Cigaretter, Prince, Light, 44.00, 200, 20", itemList[1].ToStringItem());
+            Assert.AreEqual("Tobak, Home Roll, 85.95 DKK, 71.95 DKK, 100 Stk, 62.00 g", itemList[0].ToStringItem());
+            Assert.AreEqual("Cigaretter, Prince, 44.00 DKK, 30.00 DKK, 200 Stk", itemList[1].ToStringItem());
         }
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingAString()
@@ -151,9 +151,9 @@ namespace UnitTestPibesmeden
 
             itemRepo.RemoveFromInventoryList(1);
 
-            Assert.AreEqual("Røg Tobak, Home Roll, Menthol, 85.95, 100, 62.00", itemList[0].ToStringItem());
-            Assert.AreEqual("Røg Tobak, Escort, White, 113.95, 100, 73.00", itemList[1].ToStringItem());
-            Assert.AreEqual("Cigaretter, Kings, Blå, 41.00, 200, 20", itemList[2].ToStringItem());
+            Assert.AreEqual("Tobak, Home Roll, 85.95 DKK, 71.95 DKK, 100 Stk, 62.00 g", itemList[0].ToStringItem());
+            Assert.AreEqual("Tobak, Escort, 113.95 DKK, 99.95 DKK, 100 Stk, 73.00 g", itemList[1].ToStringItem());
+            Assert.AreEqual("Cigaretter, Kings, 41.00 DKK, 27.00 DKK, 200 Stk", itemList[2].ToStringItem());
         }
         [TestMethod]
         public void CanReceiveAWarningWhenItemIsLow()
@@ -165,7 +165,7 @@ namespace UnitTestPibesmeden
             itemList[0].WarningToogle = "On";
             itemList[0].WarningThreshold = 15;
 
-            Assert.AreEqual("Prince Light Cigaretter is running low, there is only 12 left in storage.", itemRepo.Warning(itemList[0]));
+            Assert.AreEqual("Prince Cigaretter is running low, there is only 12 left in storage.", itemRepo.Warning(itemList[0]));
         }
         [TestMethod]
         public void CanReceiveAMessageWhenAItemIsNotLow()
@@ -197,9 +197,9 @@ namespace UnitTestPibesmeden
             itemRepo.AddToInventoryList(cigaret1);
             itemList = itemRepo.GetList();
 
-            itemList[0].IncAmount(3);
+            itemList[0].IncAmount(366);
 
-            Assert.AreEqual(203, itemList[0].Amount);
+            Assert.AreEqual(566, itemList[0].Amount);
         }
         [TestMethod]
         public void CanDecreasAmountBySetAmount()
@@ -207,9 +207,9 @@ namespace UnitTestPibesmeden
             itemRepo.AddToInventoryList(cigaret1);
             itemList = itemRepo.GetList();
 
-            itemList[0].DecAmount(3);
+            itemList[0].DecAmount(66);
 
-            Assert.AreEqual(197, itemList[0].Amount);
+            Assert.AreEqual(134, itemList[0].Amount);
         }
         [TestMethod]
         public void CanNotDecreasAmountBelowZero()
@@ -231,7 +231,7 @@ namespace UnitTestPibesmeden
         {
             try
             {
-                Item test = new Item("", "Prince", "Light", 666.66, 200, 100 );
+                Item test = new Item("", "Prince", 666.66, 200, 100);
             }
             catch (Exception ex)
             {
@@ -239,11 +239,11 @@ namespace UnitTestPibesmeden
             }
         }
         [TestMethod]
-        public void CanNotMakeNewItemWithEmptyBrand()
+        public void CanNotMakeNewItemWithEmptyName()
         {
             try
             {
-                Item test = new Item("Cigaretter", "", "Light", 666.66, 200, 100);
+                Item test = new Item("Cigaretter", "", 666.66, 444.44, 100);
             }
             catch (Exception ex)
             {
@@ -251,11 +251,11 @@ namespace UnitTestPibesmeden
             }
         }
         [TestMethod]
-        public void CanNotMakeNewItemWithEmptyBrandType()
+        public void CanNotMakeNewItemWithASalesPriceOfZero()
         {
             try
             {
-                Item test = new Item("Cigaretter", "Prince", "", 666.66, 200, 100);
+                Item test = new Item("Cigaretter", "Prince", 0.00, 444.44, 100);
             }
             catch (Exception ex)
             {
@@ -263,23 +263,11 @@ namespace UnitTestPibesmeden
             }
         }
         [TestMethod]
-        public void CanNotMakeNewItemWithAPriceOfZero()
+        public void CanNotMakeNewItemWithAMarketPriceOfZero()
         {
             try
             {
-                Item test = new Item("Cigaretter", "Prince", "Light", 0.00, 200, 100);
-            }
-            catch (Exception ex)
-            {
-                Assert.IsTrue(ex is Exception);
-            }
-        }
-        [TestMethod]
-        public void CanNotMakeNewItemWithZeroPieces()
-        {
-            try
-            {
-                Item test = new Item("Cigaretter", "Prince", "Light", 666.66, 200, 0);
+                Item test = new Item("Cigaretter", "Prince", 666.66, 0.00, 200);
             }
             catch (Exception ex)
             {
@@ -291,7 +279,7 @@ namespace UnitTestPibesmeden
         {
             try
             {
-                Item test = new Item("Cigaretter", "Prince", "Light", 666.66, 200, 0.00);
+                Item test = new Item("Cigaretter", "Prince", 666.66, 444.44, 200, 0.00);
             }
             catch (Exception ex)
             {
@@ -327,6 +315,24 @@ namespace UnitTestPibesmeden
             {
                 Assert.IsTrue(ex is Exception);
             }
+        }
+        [TestMethod]
+        public void CanNotAddTheSameItemMultipleTimes()
+        {
+            List<Item> items = new List<Item>() { dummy, dummy, dummy, dummy, dummy};
+
+            try
+            {
+                itemRepo.AddMultipleToInventoryList(items);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("4 input item(s) already exists, only added 1 out of a total of 5"));
+            }
+
+            itemList = itemRepo.GetList();
+
+            Assert.AreEqual(1, itemList.Count);
         }
     }
 }

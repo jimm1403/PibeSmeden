@@ -47,7 +47,7 @@
             // 
             this.comboCategory.FormattingEnabled = true;
             this.comboCategory.Items.AddRange(new object[] {
-            "Røg Tobak",
+            "Tobak",
             "Cigaretter",
             "Rullepapir",
             "Filtre",

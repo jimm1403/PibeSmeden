@@ -173,28 +173,26 @@ namespace ClassLibrary
         {
             string output;
 
-            string priceS = "" + salesPrice;
-            priceS = string.Format("{0:0.00}", salesPrice);
-            priceS = priceS.Replace(',', '.');
+            string salesPriceS = "" + salesPrice;
+            salesPriceS = string.Format("{0:0.00}", salesPrice);
+            salesPriceS = salesPriceS.Replace(',', '.');
 
-            output = category + ", " + brand + ", " + brandType + ", " + priceS + ", " + amount + ", ";
+            string marketPriceS = "" + marketPrice;
+            marketPriceS = string.Format("{0:0.00}", marketPrice);
+            marketPriceS = marketPriceS.Replace(',', '.');
 
-            if (pieces != 0)
-            {
-                output = output + pieces;
-            }
-            else if (weight != 0)
+            output = category + ", " + name + ", " + salesPriceS + " DKK, " + marketPriceS + " DKK, " + amount + " Stk";
+
+            
+            if (weight != 0)
             {
                 string weightS = "" + weight;
                 weightS = string.Format("{0:0.00}", weight);
                 weightS = weightS.Replace(',', '.');
 
-                output = output + weightS;
+                output = output + ", " + weightS + " g";
             }
-            else
-            {
-                throw new Exception("Pieces and weight are both 0");
-            }
+            
 
             return output;
         }
