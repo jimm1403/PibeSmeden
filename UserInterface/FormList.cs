@@ -18,6 +18,9 @@ namespace UserInterface
         public FormList()
         {
             InitializeComponent();
+            List<string> stringList = itemRepo.ConvertItemListToStringList();
+            InventoryListBox.DataSource = stringList;
+
         }
 
         private void button1_Click(object sender, EventArgs e)

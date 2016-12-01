@@ -18,24 +18,72 @@ namespace UserInterface
 
         public FormAdd()
         {
-            InitializeComponent();
+                InitializeComponent();
         }
         
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            if (category == "Cigaretter" || category == "Rullepapir" || category == "Filtre" || category == "Cigar" || category == "Tobak Pastiller")
+            if (txtWeight.Text == "" && category == "Tobak")
             {
-                Item myItem = new Item(category, name, double.Parse(salesPrice), double.Parse(marketPrice), int.Parse(amount));
-                itemRepo.AddToInventoryList(myItem);
-                newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
+                txtWeight.Text = "-1";
             }
-            else
+            if (txtAmount.Text == "")
             {
-                Item myItem = new Item(category, name, double.Parse(salesPrice), double.Parse(marketPrice), int.Parse(amount), double.Parse(weight));
-                itemRepo.AddToInventoryList(myItem);
-                newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
+                txtAmount.Text = "-1";
             }
-            this.Close();
+            if (txtMarketPrice.Text == "")
+            {
+                txtMarketPrice.Text = "-1";
+            }
+            if (txtSalesPrice.Text == "")
+            {
+                txtSalesPrice.Text = "-1";
+            }
+            try
+            {
+                if (category == "Cigaretter" || category == "Rullepapir" || category == "Filtre" || category == "Cigar" || category == "Tobak Pastiller")
+                {
+                    Item myItem = new Item(category, name, double.Parse(salesPrice), double.Parse(marketPrice), int.Parse(amount));
+                    itemRepo.AddToInventoryList(myItem);
+                    newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
+                }
+                else
+                {
+                    Item myItem = new Item(category, name, double.Parse(salesPrice), double.Parse(marketPrice), int.Parse(amount), double.Parse(weight));
+                    itemRepo.AddToInventoryList(myItem);
+                    newestItem = "Tilføjede: " + myItem.ToStringItem() + ". Antal: " + amount;
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.ToLowerInvariant().Contains("name can not be empty"))
+                {
+                    txtName.Text = "";
+                    MessageBox.Show("name got #rekt");
+                }
+                else if (ex.Message.ToLowerInvariant().Contains("catagory can not be empty"))
+                {
+                    comboCategory.Text = "";
+                    MessageBox.Show("category got #rekt");
+                }
+                else if (ex.Message.ToLowerInvariant().Contains("amount in storage can not be lower then zero"))
+                {
+                    txtAmount.Text = "";
+                    MessageBox.Show("amount got #rekt");
+                }
+                else if (ex.Message.ToLowerInvariant().Contains("it can not cost zero or lower"))
+                {
+                    txtMarketPrice.Text = "";
+                    txtSalesPrice.Text = "";
+                    MessageBox.Show("prices got #rekt");
+                }
+                else if (ex.Message.ToLowerInvariant().Contains("it can not weight zero or below"))
+                {
+                    txtWeight.Text = "";
+                    MessageBox.Show("don't lie about your weight");
+                }
+            }
         }
         
         private void txtBrand_TextChanged(object sender, EventArgs e)
@@ -68,7 +116,7 @@ namespace UserInterface
         private void comboCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             category = comboCategory.Text;
-            if (category == "Røg Tobak")
+            if (category == "Tobak")
             { 
                 txtWeight.Enabled = true;
             }
@@ -76,8 +124,6 @@ namespace UserInterface
             {
                 txtWeight.Enabled = false;
             }
-        }
-
-       
+        } 
     }
 }
