@@ -8,6 +8,7 @@ namespace ClassLibrary
     public class ItemRepository
     {
         static List<Item> inventoryList = new List<Item>();
+        public OrderRepository orderRepo = new OrderRepository();
 
         public void AddToInventoryList(Item item)
         {
@@ -112,6 +113,23 @@ namespace ClassLibrary
         public void ClearList()
         {
             inventoryList.Clear();
+        }
+
+        public void ReceiveOrder()
+        {
+            foreach (Order order in orderRepo.GetList())
+            {
+                if (order.CompletionTracker == false)
+                {
+                    foreach (Item item in inventoryList)
+                    {
+                        if (order.ItemOrdered.Name == item.Name)
+                        {
+                            item.IncAmount(order.BoughtAmount);
+                        }
+                    }
+                }
+            }
         }
     }
 }
