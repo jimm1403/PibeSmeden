@@ -11,11 +11,12 @@ namespace UnitTestPibesmeden
     {
         //ændre her under
         List<Item> itemList;
-        Item dummy = new Item("Dummy", "Dummy", 0.01, 0.01, 0, 1);
+        
+        Item dummyItem = new Item("Dummy", "Dummy", 0.01, 0.01, 0, 1);
         Item cigaret1 = new Item("Cigaretter", "Prince", 44.00, 30.00, 200);
         Item cigaret2 = new Item("Cigaretter", "Kings", 41.00, 27.00 , 200);
-        Item roegTobak1 = new Item("Tobak", "Home Roll", 85.95, 71.95, 100, 62.00);
-        Item roegTobak2 = new Item("Tobak", "Escort", 113.95, 99.95, 100, 73.00);
+        Item tobak1 = new Item("Tobak", "Home Roll", 85.95, 71.95, 100, 62.00);
+        Item tobak2 = new Item("Tobak", "Escort", 113.95, 99.95, 100, 73.00);
         ItemRepository itemRepo = new ItemRepository();
         //
         [TestInitialize()]
@@ -54,7 +55,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSeeTheItemInListWithWeight()
         {
-            itemRepo.AddToInventoryList(roegTobak1);
+            itemRepo.AddToInventoryList(tobak1);
             itemList = itemRepo.GetList();
 
             Assert.AreEqual("Tobak, Home Roll, 85.95 DKK, 71.95 DKK, 100 Stk, 62.00 g", itemList[0].ToStringItem());
@@ -73,7 +74,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeight()
         {
-            List<Item> items = new List<Item>() { roegTobak1, roegTobak2 };
+            List<Item> items = new List<Item>() { tobak1, tobak2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
@@ -84,7 +85,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeightAndPieces()
         {
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
@@ -95,7 +96,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingAString()
         {
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.Search("Cigaretter");
@@ -105,7 +106,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingAInt()
         {
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.Search("20");
@@ -115,7 +116,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingADouble()
         {
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.Search("73.00");
@@ -132,7 +133,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanRemoveAnItemFromTheList()
         {
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
@@ -144,7 +145,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanRemoveAnItemFromTheListAndStillSeeTheOthers()
         {
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
@@ -319,7 +320,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanNotAddTheSameItemMultipleTimes()
         {
-            List<Item> items = new List<Item>() { dummy, dummy, dummy, dummy, dummy};
+            List<Item> items = new List<Item>() { dummyItem, dummyItem, dummyItem, dummyItem, dummyItem};
 
             try
             {
