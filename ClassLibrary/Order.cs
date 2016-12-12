@@ -13,10 +13,26 @@ namespace ClassLibrary
         string orderDate; 
 
 
-        public Item ItemOrdered { get { return itemOrdered; } set { itemOrdered = value; } }
-        public int BoughtAmount { get { return boughtAmount; } set { boughtAmount = value; } }
-        public bool CompletionTracker { get { return completionTracker; } set { completionTracker = value; } }
-        public string OrderDate { get { return orderDate; } set { orderDate = value; } }
+        public Item ItemOrdered
+        {
+            get { return itemOrdered; }
+            set { itemOrdered = value; }
+        }
+        public int BoughtAmount
+        {
+            get { return boughtAmount; }
+            set { boughtAmount = value; }
+        }
+        public bool CompletionTracker
+        {
+            get { return completionTracker; }
+            set { completionTracker = value; }
+        }
+        public string OrderDate 
+        { 
+            get { return orderDate; } 
+            set { orderDate = value; } 
+        }
 
         public Order()
         {

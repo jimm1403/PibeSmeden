@@ -115,7 +115,6 @@ namespace ClassLibrary
             inventoryList.Clear();
         }
 
-        
     }
 }
 

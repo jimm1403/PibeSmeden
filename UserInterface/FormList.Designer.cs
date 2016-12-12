@@ -35,19 +35,22 @@
             this.DecTextBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.showTobakBtn = new System.Windows.Forms.Button();
+            this.showCigBtn = new System.Windows.Forms.Button();
+            this.showElse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // InventoryListBox
             // 
             this.InventoryListBox.FormattingEnabled = true;
-            this.InventoryListBox.Location = new System.Drawing.Point(13, 4);
+            this.InventoryListBox.Location = new System.Drawing.Point(14, 42);
             this.InventoryListBox.Name = "InventoryListBox";
-            this.InventoryListBox.Size = new System.Drawing.Size(259, 251);
+            this.InventoryListBox.Size = new System.Drawing.Size(303, 303);
             this.InventoryListBox.TabIndex = 1;
             // 
             // IncButton
             // 
-            this.IncButton.Location = new System.Drawing.Point(278, 43);
+            this.IncButton.Location = new System.Drawing.Point(323, 42);
             this.IncButton.Name = "IncButton";
             this.IncButton.Size = new System.Drawing.Size(103, 23);
             this.IncButton.TabIndex = 2;
@@ -57,7 +60,7 @@
             // 
             // DecButton
             // 
-            this.DecButton.Location = new System.Drawing.Point(278, 72);
+            this.DecButton.Location = new System.Drawing.Point(323, 71);
             this.DecButton.Name = "DecButton";
             this.DecButton.Size = new System.Drawing.Size(103, 23);
             this.DecButton.TabIndex = 3;
@@ -67,21 +70,21 @@
             // 
             // IncTextBox
             // 
-            this.IncTextBox.Location = new System.Drawing.Point(387, 45);
+            this.IncTextBox.Location = new System.Drawing.Point(432, 44);
             this.IncTextBox.Name = "IncTextBox";
             this.IncTextBox.Size = new System.Drawing.Size(45, 20);
             this.IncTextBox.TabIndex = 4;
             // 
             // DecTextBox
             // 
-            this.DecTextBox.Location = new System.Drawing.Point(387, 74);
+            this.DecTextBox.Location = new System.Drawing.Point(432, 73);
             this.DecTextBox.Name = "DecTextBox";
             this.DecTextBox.Size = new System.Drawing.Size(45, 20);
             this.DecTextBox.TabIndex = 5;
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(279, 226);
+            this.SearchButton.Location = new System.Drawing.Point(323, 322);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(102, 23);
             this.SearchButton.TabIndex = 6;
@@ -91,17 +94,47 @@
             // 
             // SearchTextBox
             // 
-            this.SearchTextBox.Location = new System.Drawing.Point(279, 200);
+            this.SearchTextBox.Location = new System.Drawing.Point(323, 296);
             this.SearchTextBox.Name = "SearchTextBox";
             this.SearchTextBox.Size = new System.Drawing.Size(100, 20);
             this.SearchTextBox.TabIndex = 7;
             this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
             // 
+            // showTobakBtn
+            // 
+            this.showTobakBtn.Location = new System.Drawing.Point(14, 12);
+            this.showTobakBtn.Name = "showTobakBtn";
+            this.showTobakBtn.Size = new System.Drawing.Size(97, 23);
+            this.showTobakBtn.TabIndex = 8;
+            this.showTobakBtn.Text = "Vis Tobak";
+            this.showTobakBtn.UseVisualStyleBackColor = true;
+            // 
+            // showCigBtn
+            // 
+            this.showCigBtn.Location = new System.Drawing.Point(117, 12);
+            this.showCigBtn.Name = "showCigBtn";
+            this.showCigBtn.Size = new System.Drawing.Size(97, 23);
+            this.showCigBtn.TabIndex = 9;
+            this.showCigBtn.Text = "Vis Cigaretter";
+            this.showCigBtn.UseVisualStyleBackColor = true;
+            // 
+            // showElse
+            // 
+            this.showElse.Location = new System.Drawing.Point(220, 12);
+            this.showElse.Name = "showElse";
+            this.showElse.Size = new System.Drawing.Size(97, 23);
+            this.showElse.TabIndex = 10;
+            this.showElse.Text = "Vis Andet";
+            this.showElse.UseVisualStyleBackColor = true;
+            // 
             // FormList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 261);
+            this.ClientSize = new System.Drawing.Size(493, 357);
+            this.Controls.Add(this.showElse);
+            this.Controls.Add(this.showCigBtn);
+            this.Controls.Add(this.showTobakBtn);
             this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.DecTextBox);
@@ -109,8 +142,6 @@
             this.Controls.Add(this.DecButton);
             this.Controls.Add(this.IncButton);
             this.Controls.Add(this.InventoryListBox);
-            this.MaximumSize = new System.Drawing.Size(456, 300);
-            this.MinimumSize = new System.Drawing.Size(456, 300);
             this.Name = "FormList";
             this.Text = "FormList";
             this.ResumeLayout(false);
@@ -126,5 +157,8 @@
         private System.Windows.Forms.TextBox DecTextBox;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.TextBox SearchTextBox;
+        private System.Windows.Forms.Button showTobakBtn;
+        private System.Windows.Forms.Button showCigBtn;
+        private System.Windows.Forms.Button showElse;
     }
 }
