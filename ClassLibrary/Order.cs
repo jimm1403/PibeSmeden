@@ -10,6 +10,8 @@ namespace ClassLibrary
         Item itemOrdered;
         int boughtAmount;
         bool completionTracker;
+        string orderDate; 
+
 
         public Item ItemOrdered
         {
@@ -25,6 +27,11 @@ namespace ClassLibrary
         {
             get { return completionTracker; }
             set { completionTracker = value; }
+        }
+        public string OrderDate 
+        { 
+            get { return orderDate; } 
+            set { orderDate = value; } 
         }
 
         public Order()
