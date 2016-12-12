@@ -157,8 +157,6 @@ namespace ClassLibrary
                     throw new Exception("Warning threshold can not be zero or lower");
                 }; }
         }
-
-
         public int WarningCountdown
         {
             get { return warningCountdown; }

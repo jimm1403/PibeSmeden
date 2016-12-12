@@ -114,7 +114,6 @@ namespace ClassLibrary
         {
             inventoryList.Clear();
         }
-
         public void ReceiveOrder()
         {
             foreach (Order order in orderRepo.GetList())

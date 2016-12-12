@@ -11,10 +11,21 @@ namespace ClassLibrary
         int boughtAmount;
         bool completionTracker;
 
-
-        public Item ItemOrdered { get { return itemOrdered; } set { itemOrdered = value; } }
-        public int BoughtAmount { get { return boughtAmount; } set { boughtAmount = value; } }
-        public bool CompletionTracker { get { return completionTracker; } set { completionTracker = value; } }
+        public Item ItemOrdered
+        {
+            get { return itemOrdered; }
+            set { itemOrdered = value; }
+        }
+        public int BoughtAmount
+        {
+            get { return boughtAmount; }
+            set { boughtAmount = value; }
+        }
+        public bool CompletionTracker
+        {
+            get { return completionTracker; }
+            set { completionTracker = value; }
+        }
 
         public Order()
         {
