@@ -27,6 +27,7 @@ namespace UnitTestPibesmeden
         Order restockTobak2 = new Order(tobak2, 25);
 
         ItemRepository itemRepo = new ItemRepository();
+        ReceiveOrder recOrder = new ReceiveOrder();
         //
 
         [TestInitialize()]
@@ -66,7 +67,7 @@ namespace UnitTestPibesmeden
             itemRepo.AddMultipleToInventoryList(items);
             itemRepo.orderRepo.AddMultipleOrdersToList(orders);
 
-            itemRepo.ReceiveOrder();
+            recOrder.forfillOrders();
 
             itemlist = itemRepo.GetList();
 
