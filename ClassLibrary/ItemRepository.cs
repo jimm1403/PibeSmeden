@@ -7,7 +7,7 @@ namespace ClassLibrary
 {
     public class ItemRepository
     {
-        static List<Item> inventoryList = new List<Item>();
+        public static List<Item> inventoryList = new List<Item>();
 
         public void AddToInventoryList(Item item)
         {
