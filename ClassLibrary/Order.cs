@@ -7,22 +7,12 @@ namespace ClassLibrary
 {
     public class Order
     {
-        Item itemOrdered;
-        int boughtAmount;
-        bool completionTracker;
-        string orderDate; 
-
-
-        public Item ItemOrdered
-        {
-            get { return itemOrdered; }
-            set { itemOrdered = value; }
-        }
-        public int BoughtAmount
-        {
-            get { return boughtAmount; }
-            set { boughtAmount = value; }
-        }
+        static int nextid = 1;
+        int orderId;
+        bool completionTracker = false;
+        string orderDate;
+        public List<OrderLine> orderLineList;
+        
         public bool CompletionTracker
         {
             get { return completionTracker; }
@@ -34,18 +24,43 @@ namespace ClassLibrary
             set { orderDate = value; } 
         }
 
+        public string isOrderDone()
+        {
+            string completion = "";
+            completionTracker = CompletionTracker;
+            if (completionTracker)
+            {
+                completion = "Modtaget";
+            }
+            else
+            {
+                completion = "Ikke modtaget";
+            }
+
+            return completion;
+        }
+
         public Order()
         {
 
         }
-        public Order(Item itemOrdered, int boughtAmount)
+        public Order(string orderDate)
         {
-            ItemOrdered = itemOrdered;
-            BoughtAmount = boughtAmount;
-            CompletionTracker = false;
+            completionTracker = false;
+            OrderDate = orderDate;
+            orderId = nextid++;
+            orderLineList = new List<OrderLine>();
         }
 
-        public string ToStringOrder()
+        public void addItemsToOrderLine(OrderLine orderLine)
+        {
+            orderLineList.Add(orderLine);
+        }
+        public int GetId()
+        {
+            return orderId;
+        }
+        /*public string ToStringOrder()
         {
             string output;
 
@@ -67,6 +82,6 @@ namespace ClassLibrary
                 output = output + ", Order er blevet modtaget";
             }
             return output;
-        }
+        }*/
     }
 }

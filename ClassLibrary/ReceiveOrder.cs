@@ -7,23 +7,23 @@ namespace ClassLibrary
 {
     public class ReceiveOrder
     {
-        ItemRepository itemrepo = new ItemRepository();
-        public void forfillOrders()
-        {
-            foreach (Order order in itemrepo.orderRepo.GetList())
-            {
-                if (order.CompletionTracker == false)
-                {
-                    foreach (Item item in itemrepo.GetList())
-                    {
-                        if (order.ItemOrdered.Name == item.Name)
-                        {
-                            item.IncAmount(order.BoughtAmount);
-                            order.CompletionTracker = true;
-                        }
-                    }
-                }
-            }
-        }
+        //ItemRepository itemrepo = new ItemRepository();
+        //public void forfillOrders()
+        //{
+        //    foreach (Order order in itemrepo.orderRepo.GetList())
+        //    {
+        //        if (order.CompletionTracker == false)
+        //        {
+        //            foreach (Item item in itemrepo.GetList())
+        //            {
+        //                if (order.ItemOrdered.Name == item.Name)
+        //                {
+        //                    item.IncAmount(order.BoughtAmount);
+        //                    order.CompletionTracker = true;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
