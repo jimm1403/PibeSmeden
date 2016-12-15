@@ -23,5 +23,15 @@ namespace UserInterface
             formList.ShowDialog();
             lblLastAction.Text = "";
         }
+
+        private void btnRecieve_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
