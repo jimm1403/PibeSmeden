@@ -17,7 +17,6 @@ namespace UserInterface
         public FormShowOrders()
         {
             InitializeComponent();
-
             
             gridOrderList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             int row = 0;
@@ -30,23 +29,32 @@ namespace UserInterface
                 gridOrderList.Rows[row].Cells[2].Value = order.isOrderDone();
                 row++;
             }
-            showOrderContent();
-            
         }
-        public void showOrderContent()
+
+        private void orderReceivedButton_Click(object sender, EventArgs e)
         {
+            string id = "";
             int row = 0;
-            string idToFind = "";
-            idToFind = gridOrderList.SelectedRows[0].Cells[0].Value.ToString();
-            
-            Order orderToFind;
-            foreach (var order in OrderRepository.orderList)
+
+            try
             {
-                if (order.GetId() == int.Parse(idToFind))
+                id = gridOrderList.SelectedRows[0].Cells[0].Value.ToString();
+                foreach (var order in OrderRepository.orderList)
                 {
-                orderToFind = orderRepo.FindOrderById(int.Parse(idToFind));
-                orderLineListBox.DataSource = orderToFind.orderLineList.ToString();
+                    if (order.GetId() == int.Parse(id))
+                    {
+                        order.CompletionTracker = true;
+                    }
+                    
+                    gridOrderList.Rows[row].Cells[0].Value = order.GetId();
+                    gridOrderList.Rows[row].Cells[1].Value = order.OrderDate;
+                    gridOrderList.Rows[row].Cells[2].Value = order.isOrderDone();
+                    row++;
                 }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Vælg venligst et produkt");
             }
         }
     }

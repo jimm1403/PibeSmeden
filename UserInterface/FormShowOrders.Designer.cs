@@ -32,8 +32,7 @@
             this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marketPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.orderLineListBox = new System.Windows.Forms.ListBox();
+            this.orderReceivedButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridOrderList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,36 +64,27 @@
             this.marketPrice.HeaderText = "Status";
             this.marketPrice.Name = "marketPrice";
             // 
-            // label1
+            // orderReceivedButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(364, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Denne ordre indeholder";
-            // 
-            // orderLineListBox
-            // 
-            this.orderLineListBox.FormattingEnabled = true;
-            this.orderLineListBox.Location = new System.Drawing.Point(367, 70);
-            this.orderLineListBox.Name = "orderLineListBox";
-            this.orderLineListBox.Size = new System.Drawing.Size(120, 95);
-            this.orderLineListBox.TabIndex = 11;
+            this.orderReceivedButton.Location = new System.Drawing.Point(364, 21);
+            this.orderReceivedButton.Name = "orderReceivedButton";
+            this.orderReceivedButton.Size = new System.Drawing.Size(75, 23);
+            this.orderReceivedButton.TabIndex = 10;
+            this.orderReceivedButton.Text = "Modtaget";
+            this.orderReceivedButton.UseVisualStyleBackColor = true;
+            this.orderReceivedButton.Click += new System.EventHandler(this.orderReceivedButton_Click);
             // 
             // FormShowOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 385);
-            this.Controls.Add(this.orderLineListBox);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(444, 379);
+            this.Controls.Add(this.orderReceivedButton);
             this.Controls.Add(this.gridOrderList);
             this.Name = "FormShowOrders";
             this.Text = "FormShowOrders";
             ((System.ComponentModel.ISupportInitialize)(this.gridOrderList)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -104,7 +94,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn category;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn marketPrice;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox orderLineListBox;
+        private System.Windows.Forms.Button orderReceivedButton;
     }
 }

@@ -15,9 +15,5 @@ namespace ClassLibrary
             this.quantity = quantity;
             orderLineItem = item;
         }
-
-        
-
-
     }
 }

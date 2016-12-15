@@ -42,7 +42,7 @@
             // 
             // addToOrderBtn
             // 
-            this.addToOrderBtn.Location = new System.Drawing.Point(211, 115);
+            this.addToOrderBtn.Location = new System.Drawing.Point(255, 115);
             this.addToOrderBtn.Name = "addToOrderBtn";
             this.addToOrderBtn.Size = new System.Drawing.Size(135, 42);
             this.addToOrderBtn.TabIndex = 0;
@@ -53,7 +53,7 @@
             // orderLineQuantityLabel
             // 
             this.orderLineQuantityLabel.AutoSize = true;
-            this.orderLineQuantityLabel.Location = new System.Drawing.Point(208, 73);
+            this.orderLineQuantityLabel.Location = new System.Drawing.Point(252, 73);
             this.orderLineQuantityLabel.Name = "orderLineQuantityLabel";
             this.orderLineQuantityLabel.Size = new System.Drawing.Size(111, 13);
             this.orderLineQuantityLabel.TabIndex = 1;
@@ -61,7 +61,7 @@
             // 
             // orderLineQuantityTxtBox
             // 
-            this.orderLineQuantityTxtBox.Location = new System.Drawing.Point(211, 89);
+            this.orderLineQuantityTxtBox.Location = new System.Drawing.Point(255, 89);
             this.orderLineQuantityTxtBox.Name = "orderLineQuantityTxtBox";
             this.orderLineQuantityTxtBox.Size = new System.Drawing.Size(100, 20);
             this.orderLineQuantityTxtBox.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             this.chooseOrderProductLabel.AutoSize = true;
             this.chooseOrderProductLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chooseOrderProductLabel.Location = new System.Drawing.Point(207, 31);
+            this.chooseOrderProductLabel.Location = new System.Drawing.Point(251, 31);
             this.chooseOrderProductLabel.Name = "chooseOrderProductLabel";
             this.chooseOrderProductLabel.Size = new System.Drawing.Size(151, 13);
             this.chooseOrderProductLabel.TabIndex = 3;
@@ -104,7 +104,7 @@
             // productSelectionComboBox
             // 
             this.productSelectionComboBox.FormattingEnabled = true;
-            this.productSelectionComboBox.Location = new System.Drawing.Point(210, 49);
+            this.productSelectionComboBox.Location = new System.Drawing.Point(254, 49);
             this.productSelectionComboBox.Name = "productSelectionComboBox";
             this.productSelectionComboBox.Size = new System.Drawing.Size(121, 21);
             this.productSelectionComboBox.TabIndex = 14;
@@ -115,9 +115,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 15);
+            this.label1.Size = new System.Drawing.Size(404, 15);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Opret en ny ordre eller tilføj til en allerede eksisterende.";
+            this.label1.Text = "Opret en ny ordre og vælg hvilke produkter den skal indeholde";
             // 
             // newOrderButton
             // 
@@ -133,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 168);
+            this.ClientSize = new System.Drawing.Size(429, 168);
             this.Controls.Add(this.newOrderButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.productSelectionComboBox);
