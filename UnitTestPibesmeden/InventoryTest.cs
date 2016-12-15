@@ -9,19 +9,27 @@ namespace UnitTestPibesmeden
     [TestClass]
     public class InventoryTest
     {
-
+        //ændre her under
         List<Item> itemList;
-        Item dummy = new Item("Dummy", "Dummy", "Dummy", 0.00, 0);
-        Item cigaret1 = new Item("Cigaretter", "Prince", "Light", 44.00, 20);
-        Item cigaret2 = new Item("Cigaretter", "Kings", "Blå", 41.00, 20);
-        Item roegTobak1 = new Item("Røg Tobak", "Home Roll", "Menthol", 85.95, 62.00);
-        Item roegTobak2 = new Item("Røg Tobak", "Escort", "White", 113.95, 73.00);
+        List<string> itemListString;
+        
+        Item dummyItem = new Item("Dummy", "Dummy", 0.01, 0.01, 0, 1);
+        Item cigaret1 = new Item("Cigaretter", "Prince", 44.00, 30.00, 200);
+        Item cigaret2 = new Item("Cigaretter", "Kings", 41.00, 27.00 , 200);
+        Item tobak1 = new Item("Tobak", "Home Roll", 85.95, 71.95, 100, 62.00);
+        Item tobak2 = new Item("Tobak", "Escort", 113.95, 99.95, 100, 73.00);
+        ItemRepository itemRepo = new ItemRepository();
+        
+        //
+        [TestInitialize()]
+        public void Initialize()
+        {
+            itemRepo.ClearList();
+        }
 
         [TestMethod]
         public void CanAddNewItemToList()
         {
-            ItemRepository itemRepo = new ItemRepository();
-
             itemRepo.AddToInventoryList(cigaret1);
             itemList = itemRepo.GetList();
 
@@ -30,8 +38,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanAddMultipleItemsToList()
         {
-            ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { cigaret1, cigaret2};
+            List<Item> items = new List<Item>() { cigaret1, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
@@ -41,92 +48,82 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanSeeTheItemInListWithPieces()
         {
-            ItemRepository itemRepo = new ItemRepository();
-
             itemRepo.AddToInventoryList(cigaret1);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[0].ToStringItem());
+            Assert.AreEqual("Cigaretter, Prince, 44.00 DKK, 30.00 DKK, 200 Stk", itemList[0].ToStringItem());
 
         }
         [TestMethod]
         public void CanSeeTheItemInListWithWeight()
         {
-            ItemRepository itemRepo = new ItemRepository();
-
-            itemRepo.AddToInventoryList(roegTobak1);
+            itemRepo.AddToInventoryList(tobak1);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToStringItem());
+            Assert.AreEqual("Tobak, Home Roll, 85.95 DKK, 71.95 DKK, 100 Stk, 62.00 g", itemList[0].ToStringItem());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithPieces()
         {
-            ItemRepository itemRepo = new ItemRepository();
             List<Item> items = new List<Item>() { cigaret1, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[0].ToStringItem());
-            Assert.AreEqual("Cigaretter Kings Blå 41.00 20", itemList[1].ToStringItem());
+            Assert.AreEqual("Cigaretter, Prince, 44.00 DKK, 30.00 DKK, 200 Stk", itemList[0].ToStringItem());
+            Assert.AreEqual("Cigaretter, Kings, 41.00 DKK, 27.00 DKK, 200 Stk", itemList[1].ToStringItem());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeight()
         {
-            ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { roegTobak1, roegTobak2};
+            List<Item> items = new List<Item>() { tobak1, tobak2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToStringItem());
-            Assert.AreEqual("Røg Tobak Escort White 113.95 73.00", itemList[1].ToStringItem());
+            Assert.AreEqual("Tobak, Home Roll, 85.95 DKK, 71.95 DKK, 100 Stk, 62.00 g", itemList[0].ToStringItem());
+            Assert.AreEqual("Tobak, Escort, 113.95 DKK, 99.95 DKK, 100 Stk, 73.00 g", itemList[1].ToStringItem());
         }
         [TestMethod]
         public void CanSeeMultipleItemsInListWithWeightAndPieces()
         {
-            ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1};
+            List<Item> items = new List<Item>() { tobak1, cigaret1 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
-            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToStringItem());
-            Assert.AreEqual("Cigaretter Prince Light 44.00 20", itemList[1].ToStringItem());
+            Assert.AreEqual("Tobak, Home Roll, 85.95 DKK, 71.95 DKK, 100 Stk, 62.00 g", itemList[0].ToStringItem());
+            Assert.AreEqual("Cigaretter, Prince, 44.00 DKK, 30.00 DKK, 200 Stk", itemList[1].ToStringItem());
         }
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingAString()
         {
-            ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
-            itemList = itemRepo.Search("Cigaretter");
+            itemListString = itemRepo.Search("Cigaretter");
 
-            Assert.AreEqual(2, itemList.Count);
+            Assert.AreEqual(2, itemListString.Count);
         }
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingAInt()
         {
-            ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
-            itemList = itemRepo.Search("20");
+            itemListString = itemRepo.Search("20");
 
-            Assert.AreEqual(2, itemList.Count);
+            Assert.AreEqual(2, itemListString.Count);
         }
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingADouble()
         {
-            ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
-            itemList = itemRepo.Search("73.00");
+            itemListString = itemRepo.Search("73.00");
 
-            Assert.AreEqual(1, itemList.Count);
+            Assert.AreEqual(1, itemListString.Count);
         }
         [TestMethod]
         public void CanSetAmountOfItemInInventory()
@@ -138,8 +135,7 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanRemoveAnItemFromTheList()
         {
-            ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
@@ -151,17 +147,197 @@ namespace UnitTestPibesmeden
         [TestMethod]
         public void CanRemoveAnItemFromTheListAndStillSeeTheOthers()
         {
-            ItemRepository itemRepo = new ItemRepository();
-            List<Item> items = new List<Item>() { roegTobak1, cigaret1, roegTobak2, cigaret2 };
+            List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
             itemList = itemRepo.GetList();
 
             itemRepo.RemoveFromInventoryList(1);
 
-            Assert.AreEqual("Røg Tobak Home Roll Menthol 85.95 62.00", itemList[0].ToStringItem());
-            Assert.AreEqual("Røg Tobak Escort White 113.95 73.00", itemList[1].ToStringItem());
-            Assert.AreEqual("Cigaretter Kings Blå 41.00 20", itemList[2].ToStringItem());
+            Assert.AreEqual("Tobak, Home Roll, 85.95 DKK, 71.95 DKK, 100 Stk, 62.00 g", itemList[0].ToStringItem());
+            Assert.AreEqual("Tobak, Escort, 113.95 DKK, 99.95 DKK, 100 Stk, 73.00 g", itemList[1].ToStringItem());
+            Assert.AreEqual("Cigaretter, Kings, 41.00 DKK, 27.00 DKK, 200 Stk", itemList[2].ToStringItem());
+        }
+        [TestMethod]
+        public void CanReceiveAWarningWhenItemIsLow()
+        {
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            itemList[0].Amount = 12;
+            itemList[0].WarningToogle = "On";
+            itemList[0].WarningThreshold = 15;
+
+            Assert.AreEqual("Prince Cigaretter is running low, there is only 12 left in storage.", itemRepo.Warning(itemList[0]));
+        }
+        [TestMethod]
+        public void CanReceiveAMessageWhenAItemIsNotLow()
+        {
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            itemList[0].Amount = 12;
+            itemList[0].WarningToogle = "On";
+            itemList[0].WarningThreshold = 10;
+
+            Assert.AreEqual("There is enough items in storage, or this item is not set to have a warning.", itemRepo.Warning(itemList[0]));
+        }
+        [TestMethod]
+        public void CanReceiveAMessageWhenAItemIsNotSetupToWarn()
+        {
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            itemList[0].Amount = 12;
+            itemList[0].WarningToogle = "Off";
+            itemList[0].WarningThreshold = 15;
+
+            Assert.AreEqual("There is enough items in storage, or this item is not set to have a warning.", itemRepo.Warning(itemList[0]));
+        }
+        [TestMethod]
+        public void CanIncreaseAmountBySetAmount()
+        {
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            itemList[0].IncAmount(366);
+
+            Assert.AreEqual(566, itemList[0].Amount);
+        }
+        [TestMethod]
+        public void CanDecreasAmountBySetAmount()
+        {
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            itemList[0].DecAmount(66);
+
+            Assert.AreEqual(134, itemList[0].Amount);
+        }
+        [TestMethod]
+        public void CanNotDecreasAmountBelowZero()
+        {
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            try
+            {
+                itemList[0].DecAmount(666);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("can't go below zero"));
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithEmptyCatagory()
+        {
+            try
+            {
+                Item test = new Item("", "Prince", 666.66, 200, 100);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("catagory can not be empty"));
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithEmptyName()
+        {
+            try
+            {
+                Item test = new Item("Cigaretter", "", 666.66, 444.44, 100);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("name can not be empty"));
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithASalesPriceOfZero()
+        {
+            try
+            {
+                Item test = new Item("Cigaretter", "Prince", 0.00, 444.44, 100);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("it can not cost zero or lower"));
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithAMarketPriceOfZero()
+        {
+            try
+            {
+                Item test = new Item("Cigaretter", "Prince", 666.66, 0.00, 200);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("it can not cost zero or lower"));
+            }
+        }
+        [TestMethod]
+        public void CanNotMakeNewItemWithZeroWeight()
+        {
+            try
+            {
+                Item test = new Item("Cigaretter", "Prince", 666.66, 444.44, 200, 0.00);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("it can not weight zero or below"));
+            }
+        }
+        [TestMethod]
+        public void CanNotSetWarningThresholdToZeroOrLess()
+        {
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            try
+            {
+                itemList[0].WarningThreshold = 0;
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("warning threshold can not be zero or lower"));
+            }
+        }
+        [TestMethod]
+        public void CanNotSetAmountToLessThenZero()
+        {
+            itemRepo.AddToInventoryList(cigaret1);
+            itemList = itemRepo.GetList();
+
+            try
+            {
+                itemList[0].Amount = -1;
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("amount in storage can not be lower then zero"));
+            }
+        }
+        [TestMethod]
+        public void CanNotAddTheSameItemMultipleTimes()
+        {
+            List<Item> items = new List<Item>() { dummyItem, dummyItem, dummyItem, dummyItem, dummyItem};
+
+            try
+            {
+                itemRepo.AddMultipleToInventoryList(items);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.ToLowerInvariant().Contains("4 input item(s) already exists, only added 1 out of a total of 5"));
+            }
+
+            itemList = itemRepo.GetList();
+
+            Assert.AreEqual(1, itemList.Count);
         }
     }
 }
+
+
