@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClassLibrary
 {
-    class ReceiveOrder
+    public class ReceiveOrder
     {
         ItemRepository itemrepo = new ItemRepository();
         public void forfillOrders()

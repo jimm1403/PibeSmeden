@@ -11,6 +11,7 @@ namespace UnitTestPibesmeden
     {
         //ændre her under
         List<Item> itemList;
+        List<string> itemListString;
         
         Item dummyItem = new Item("Dummy", "Dummy", 0.01, 0.01, 0, 1);
         Item cigaret1 = new Item("Cigaretter", "Prince", 44.00, 30.00, 200);
@@ -18,6 +19,7 @@ namespace UnitTestPibesmeden
         Item tobak1 = new Item("Tobak", "Home Roll", 85.95, 71.95, 100, 62.00);
         Item tobak2 = new Item("Tobak", "Escort", 113.95, 99.95, 100, 73.00);
         ItemRepository itemRepo = new ItemRepository();
+        
         //
         [TestInitialize()]
         public void Initialize()
@@ -99,9 +101,9 @@ namespace UnitTestPibesmeden
             List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
-            itemList = itemRepo.Search("Cigaretter");
+            itemListString = itemRepo.Search("Cigaretter");
 
-            Assert.AreEqual(2, itemList.Count);
+            Assert.AreEqual(2, itemListString.Count);
         }
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingAInt()
@@ -109,9 +111,9 @@ namespace UnitTestPibesmeden
             List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
-            itemList = itemRepo.Search("20");
+            itemListString = itemRepo.Search("20");
 
-            Assert.AreEqual(2, itemList.Count);
+            Assert.AreEqual(2, itemListString.Count);
         }
         [TestMethod]
         public void CanSearchAndRetriveNewListWithHitsUsingADouble()
@@ -119,9 +121,9 @@ namespace UnitTestPibesmeden
             List<Item> items = new List<Item>() { tobak1, cigaret1, tobak2, cigaret2 };
 
             itemRepo.AddMultipleToInventoryList(items);
-            itemList = itemRepo.Search("73.00");
+            itemListString = itemRepo.Search("73.00");
 
-            Assert.AreEqual(1, itemList.Count);
+            Assert.AreEqual(1, itemListString.Count);
         }
         [TestMethod]
         public void CanSetAmountOfItemInInventory()
