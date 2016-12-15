@@ -9,6 +9,9 @@ namespace ClassLibrary
     {
         public static List<Item> inventoryList = new List<Item>();
 
+        public OrderRepository orderRepo = new OrderRepository();
+
+
         public void AddToInventoryList(Item item)
         {
             try
@@ -113,6 +116,7 @@ namespace ClassLibrary
         {
             inventoryList.Clear();
         }
+
     }
 }
 

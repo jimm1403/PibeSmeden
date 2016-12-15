@@ -18,6 +18,7 @@ namespace UserInterface
         public FormList()
         {
             InitializeComponent();
+
             gridProductList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             int row = 0;
             string amount = "0";
@@ -34,6 +35,7 @@ namespace UserInterface
                 gridProductList.Rows[row].Cells[5].Value = amount;
                 row++;
             }
+
         }
 
         private void IncButton_Click(object sender, EventArgs e)
