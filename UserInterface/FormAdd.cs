@@ -55,33 +55,34 @@ namespace UserInterface
                 }
                 this.Close();
             }
+
             catch (Exception ex)
             {
                 if (ex.Message.ToLowerInvariant().Contains("name can not be empty"))
                 {
                     txtName.Text = "";
-                    MessageBox.Show("name got #rekt");
+                    MessageBox.Show("Skriv venligst et navn.");
                 }
-                else if (ex.Message.ToLowerInvariant().Contains("catagory can not be empty"))
+                if (ex.Message.ToLowerInvariant().Contains("catagory can not be empty"))
                 {
                     comboCategory.Text = "";
-                    MessageBox.Show("category got #rekt");
+                    MessageBox.Show("Vælg venligst en kategori.");
                 }
-                else if (ex.Message.ToLowerInvariant().Contains("amount in storage can not be lower then zero"))
+                if (ex.Message.ToLowerInvariant().Contains("amount in storage can not be lower then zero"))
                 {
                     txtAmount.Text = "";
-                    MessageBox.Show("amount got #rekt");
+                    MessageBox.Show("Skriv veligst en gyldig mængde. Bemærk at det skal være et tal.");
                 }
-                else if (ex.Message.ToLowerInvariant().Contains("it can not cost zero or lower"))
+                if (ex.Message.ToLowerInvariant().Contains("it can not cost zero or lower"))
                 {
                     txtMarketPrice.Text = "";
                     txtSalesPrice.Text = "";
-                    MessageBox.Show("prices got #rekt");
+                    MessageBox.Show("Skriv veligst en gyldig pris. Bemærk at det skal være et tal.");
                 }
-                else if (ex.Message.ToLowerInvariant().Contains("it can not weight zero or below"))
+                if (ex.Message.ToLowerInvariant().Contains("it can not weight zero or below"))
                 {
                     txtWeight.Text = "";
-                    MessageBox.Show("don't lie about your weight");
+                    MessageBox.Show("Skriv veligst en gyldig vægt. Bemærk at det skal være et tal.");
                 }
             }
         }
