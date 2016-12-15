@@ -7,12 +7,15 @@ namespace ClassLibrary
 {
     public class Item
     {
-        string category;
-        string name;
-        double salesPrice;
-        double marketPrice;
-        double weight;
-        int amount;
+        public string category;
+        public string name;
+        public double salesPrice;
+        public string salesPriceS;
+        public double marketPrice;
+        public string marketPriceS;
+        public double weight;
+        public string weightS;
+        public int amount;
         bool warnignToogle;
         int warningThreshold;
         int warningCountdown;
@@ -188,19 +191,20 @@ namespace ClassLibrary
         {
             string output;
 
-            string salesPriceS = "" + salesPrice;
+            salesPriceS = "" + salesPrice;
             salesPriceS = string.Format("{0:0.00}", salesPrice);
             salesPriceS = salesPriceS.Replace(',', '.');
 
-            string marketPriceS = "" + marketPrice;
+            marketPriceS = "" + marketPrice;
             marketPriceS = string.Format("{0:0.00}", marketPrice);
             marketPriceS = marketPriceS.Replace(',', '.');
 
             output = category + ", " + name + ", " + salesPriceS + " DKK, " + marketPriceS + " DKK, " + amount + " Stk";
 
+
             if (weight != 0)
             {
-                string weightS = "" + weight;
+                weightS = "" + weight;
                 weightS = string.Format("{0:0.00}", weight);
                 weightS = weightS.Replace(',', '.');
 

@@ -18,16 +18,26 @@ namespace UserInterface
         public FormList()
         {
             InitializeComponent();
-            List<string> stringList = itemRepo.ConvertItemListToStringList();
-            InventoryListBox.DataSource = stringList;
-            
+
+            gridProductList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            int row = 0;
+            string amount = "0";
+
+            foreach (var Item in ItemRepository.inventoryList)
+            {
+                amount = Item.amount.ToString();
+                gridProductList.Rows.Add();
+                gridProductList.Rows[row].Cells[0].Value = Item.category;
+                gridProductList.Rows[row].Cells[1].Value = Item.name;
+                gridProductList.Rows[row].Cells[2].Value = Item.salesPriceS;
+                gridProductList.Rows[row].Cells[3].Value = Item.marketPriceS;
+                gridProductList.Rows[row].Cells[4].Value = Item.weightS;
+                gridProductList.Rows[row].Cells[5].Value = amount;
+                row++;
+            }
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            List<string> stringList = itemRepo.ConvertItemListToStringList();
-            InventoryListBox.DataSource = stringList;
-        }
         private void IncButton_Click(object sender, EventArgs e)
         {
             List<Item> itemList = itemRepo.GetList();
@@ -57,15 +67,34 @@ namespace UserInterface
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            TextBox ToEmne = (TextBox)sender;
-            searchWord = ToEmne.Text;
+            searchWord = SearchTextBox.Text;
+
+            try
+            {
+                foreach (DataGridViewRow row in gridProductList.Rows)
+                {
+                    row.Selected = false;
+                    if
+                        (row.Cells[0].Value.Equals(searchWord)
+                        || row.Cells[1].Value.Equals(searchWord)
+                        || row.Cells[2].Value.Equals(searchWord)
+                        || row.Cells[3].Value.Equals(searchWord)
+                        || row.Cells[4].Value.Equals(searchWord)
+                        || row.Cells[5].Value.Equals(searchWord))   
+                    {
+                        row.Selected = true;
+                    }
+                }
+            }
+            catch (Exception)
+            { }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            List<Item> itemList = itemRepo.Search(searchWord);
+            List<Item> gridProductList = itemRepo.Search(searchWord);
             List<string> searchList = new List<string>();
-            foreach (Item item in itemList)
+            foreach (Item item in gridProductList)
             {
                 searchList.Add(item.ToStringItem());
             }
