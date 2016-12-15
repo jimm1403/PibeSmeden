@@ -89,7 +89,7 @@ namespace UserInterface
             catch (Exception)
             { }
         }
-
+/*
         private void SearchButton_Click(object sender, EventArgs e)
         {
             List<Item> gridProductList = itemRepo.Search(searchWord);
@@ -101,5 +101,6 @@ namespace UserInterface
 
             InventoryListBox.DataSource = searchList;
         }
+        */
     }
 }
