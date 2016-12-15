@@ -199,7 +199,7 @@ namespace ClassLibrary
             marketPriceS = string.Format("{0:0.00}", marketPrice);
             marketPriceS = marketPriceS.Replace(',', '.');
 
-            output = category + ", " + name + ", " + salesPriceS + " DKK, " + marketPriceS + " DKK, " + amount + " Stk";
+            output = category + "," + name + "," + salesPriceS + "," + marketPriceS + "," + amount;
 
 
             if (weight != 0)
@@ -208,14 +208,14 @@ namespace ClassLibrary
                 weightS = string.Format("{0:0.00}", weight);
                 weightS = weightS.Replace(',', '.');
 
-                output = output + ", " + weightS + " g";
+                output = output + "," + weightS;
             }
 
             warningCountdown = amount - warningThreshold;
 
             if (warningCountdown <= 0)
             {
-                output = output + " - LAV BEHOLDNING!";
+           //     output = output + " - LAV BEHOLDNING!";
             }
 
             return output;
