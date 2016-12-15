@@ -67,9 +67,9 @@ namespace ClassLibrary
         {
             return inventoryList;
         }
-        public List<Item> Search(string searchTerm)
+        public List<string> Search(string searchTerm)
         {
-            List<Item> output = new List<Item>();
+            List<string> output = new List<string>();
 
             string searchTermLow = searchTerm.ToLower();
 
@@ -77,7 +77,7 @@ namespace ClassLibrary
             {
                 if (item.ToStringItem().ToLower().Contains(searchTermLow))
                 {
-                    output.Add(item);
+                    output.Add(item.ToStringItem());
                 }
             }
             if (output.Count == 0)
