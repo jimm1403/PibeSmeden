@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.InventoryListBox = new System.Windows.Forms.ListBox();
             this.IncButton = new System.Windows.Forms.Button();
             this.DecButton = new System.Windows.Forms.Button();
             this.IncTextBox = new System.Windows.Forms.TextBox();
@@ -43,14 +42,6 @@
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridProductList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // InventoryListBox
-            // 
-            this.InventoryListBox.FormattingEnabled = true;
-            this.InventoryListBox.Location = new System.Drawing.Point(14, 42);
-            this.InventoryListBox.Name = "InventoryListBox";
-            this.InventoryListBox.Size = new System.Drawing.Size(303, 303);
-            this.InventoryListBox.TabIndex = 1;
             // 
             // IncButton
             // 
@@ -105,7 +96,7 @@
             this.marketPrice,
             this.weight,
             this.amount});
-            this.gridProductList.Location = new System.Drawing.Point(12, 4);
+            this.gridProductList.Location = new System.Drawing.Point(11, 4);
             this.gridProductList.Name = "gridProductList";
             this.gridProductList.Size = new System.Drawing.Size(644, 293);
             this.gridProductList.TabIndex = 8;
@@ -151,7 +142,6 @@
             this.Controls.Add(this.IncTextBox);
             this.Controls.Add(this.DecButton);
             this.Controls.Add(this.IncButton);
-            this.Controls.Add(this.InventoryListBox);
             this.Name = "FormList";
             this.Text = "FormList";
             ((System.ComponentModel.ISupportInitialize)(this.gridProductList)).EndInit();
@@ -161,7 +151,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ListBox InventoryListBox;
         private System.Windows.Forms.Button IncButton;
         private System.Windows.Forms.Button DecButton;
         private System.Windows.Forms.TextBox IncTextBox;

@@ -14,6 +14,7 @@ namespace UserInterface
     public partial class FormList : Form
     {
         string searchWord;
+        
         ItemRepository itemRepo = new ItemRepository();
         public FormList()
         {
@@ -35,35 +36,76 @@ namespace UserInterface
                 gridProductList.Rows[row].Cells[5].Value = amount;
                 row++;
             }
-
         }
 
         private void IncButton_Click(object sender, EventArgs e)
         {
-            List<Item> itemList = itemRepo.GetList();
-            int incAmount = int.Parse(IncTextBox.Text);
-            int selectedItem = InventoryListBox.SelectedIndex;
-            if (selectedItem <= itemList.Count)
+            string name = "Nameless";
+            int row = 0;
+            string amount = "0";
+
+            try
             {
-                itemList[selectedItem].IncAmount(incAmount);
+            name = gridProductList.SelectedRows[0].Cells[1].Value.ToString();
+                foreach (var Item in ItemRepository.inventoryList)
+                {
+                    if (Item.name == name)
+                    {
+                        Item.IncAmount(int.Parse(IncTextBox.Text));
+                    }
+
+                    amount = Item.amount.ToString();
+                    gridProductList.Rows[row].Cells[0].Value = Item.category;
+                    gridProductList.Rows[row].Cells[1].Value = Item.name;
+                    gridProductList.Rows[row].Cells[2].Value = Item.salesPriceS;
+                    gridProductList.Rows[row].Cells[3].Value = Item.marketPriceS;
+                    gridProductList.Rows[row].Cells[4].Value = Item.weightS;
+                    gridProductList.Rows[row].Cells[5].Value = amount;
+                    row++;
+                }
             }
-            IncTextBox.Clear();
-            List<string> stringList = itemRepo.ConvertItemListToStringList();
-            InventoryListBox.DataSource = stringList;
+            catch (ArgumentOutOfRangeException)
+            {
+               MessageBox.Show("Vælg venligst et produkt");
+            }
         }
         private void DecButton_Click(object sender, EventArgs e)
         {
-            List<Item> itemList = itemRepo.GetList();
-            int decAmount = int.Parse(DecTextBox.Text);
-            int selectedItem = InventoryListBox.SelectedIndex;
-            if (selectedItem <= itemList.Count)
+            string name = "Nameless";
+            int row = 0;
+            string amount = "0";
+
+            try
             {
-                itemList[selectedItem].DecAmount(decAmount);
+                name = gridProductList.SelectedRows[0].Cells[1].Value.ToString();
+                foreach (var Item in ItemRepository.inventoryList)
+                {
+                    if (Item.name == name)
+                    {
+                        Item.DecAmount(int.Parse(DecTextBox.Text));
+                    }
+
+                    amount = Item.amount.ToString();
+                    gridProductList.Rows[row].Cells[0].Value = Item.category;
+                    gridProductList.Rows[row].Cells[1].Value = Item.name;
+                    gridProductList.Rows[row].Cells[2].Value = Item.salesPriceS;
+                    gridProductList.Rows[row].Cells[3].Value = Item.marketPriceS;
+                    gridProductList.Rows[row].Cells[4].Value = Item.weightS;
+                    gridProductList.Rows[row].Cells[5].Value = amount;
+                    row++;
+                }
             }
-            DecTextBox.Clear();
-            List<string> stringList = itemRepo.ConvertItemListToStringList();
-            InventoryListBox.DataSource = stringList;
-        }
+            catch (Exception dec)
+            {
+                if (dec.Message == "Can't go below zero")
+                {
+                    MessageBox.Show("Kan ikke gå under 0");
+                }
+                else
+                    MessageBox.Show("Vælg venligst et produkt");
+
+            }
+        } 
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -73,34 +115,28 @@ namespace UserInterface
             {
                 foreach (DataGridViewRow row in gridProductList.Rows)
                 {
+
                     row.Selected = false;
                     if
-                        (row.Cells[0].Value.Equals(searchWord)
-                        || row.Cells[1].Value.Equals(searchWord)
-                        || row.Cells[2].Value.Equals(searchWord)
-                        || row.Cells[3].Value.Equals(searchWord)
-                        || row.Cells[4].Value.Equals(searchWord)
-                        || row.Cells[5].Value.Equals(searchWord))   
+                        (row.Cells[0].Value.ToString().ToLower().Contains(searchWord.ToLower())
+                        || row.Cells[1].Value.ToString().ToLower().Contains(searchWord.ToLower())
+                        || row.Cells[2].Value.ToString().ToLower().Contains(searchWord.ToLower())
+                        || row.Cells[3].Value.ToString().ToLower().Contains(searchWord.ToLower())
+                        || row.Cells[5].Value.ToString().ToLower().Contains(searchWord.ToLower()))
                     {
                         row.Selected = true;
+                    }
+                    if (row.Cells[0].Value.ToString().Equals("Tobak"))
+                    {
+                        if (row.Cells[4].Value.ToString().ToLower().Contains(searchWord.ToLower()))
+                        {
+                            row.Selected = true;
+                        }
                     }
                 }
             }
             catch (Exception)
             { }
         }
-/*
-        private void SearchButton_Click(object sender, EventArgs e)
-        {
-            List<Item> gridProductList = itemRepo.Search(searchWord);
-            List<string> searchList = new List<string>();
-            foreach (Item item in gridProductList)
-            {
-                searchList.Add(item.ToStringItem());
-            }
-
-            InventoryListBox.DataSource = searchList;
-        }
-        */
     }
 }
