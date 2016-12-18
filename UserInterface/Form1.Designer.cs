@@ -74,6 +74,7 @@
             this.btnRecieve.TabIndex = 3;
             this.btnRecieve.Text = "Varemodtagelse";
             this.btnRecieve.UseVisualStyleBackColor = true;
+            this.btnRecieve.Click += new System.EventHandler(this.btnRecieve_Click);
             // 
             // btnRemove
             // 
@@ -83,6 +84,7 @@
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Fjern Vare";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // Form1
             // 
