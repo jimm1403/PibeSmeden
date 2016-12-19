@@ -98,6 +98,7 @@
             this.amount});
             this.gridProductList.Location = new System.Drawing.Point(11, 4);
             this.gridProductList.Name = "gridProductList";
+            this.gridProductList.ReadOnly = true;
             this.gridProductList.Size = new System.Drawing.Size(644, 293);
             this.gridProductList.TabIndex = 8;
             // 
@@ -143,7 +144,8 @@
             this.Controls.Add(this.DecButton);
             this.Controls.Add(this.IncButton);
             this.Name = "FormList";
-            this.Text = "FormList";
+            this.ShowIcon = false;
+            this.Text = "Lager";
             ((System.ComponentModel.ISupportInitialize)(this.gridProductList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

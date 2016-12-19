@@ -12,9 +12,7 @@ using ClassLibrary;
 namespace UserInterface
 {
     public partial class FormList : Form
-    {
-        string searchWord;
-        
+    {   
         ItemRepository itemRepo = new ItemRepository();
         public FormList()
         {
@@ -22,18 +20,16 @@ namespace UserInterface
 
             gridProductList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             int row = 0;
-            string amount = "0";
 
             foreach (var Item in ItemRepository.inventoryList)
             {
-                amount = Item.amount.ToString();
                 gridProductList.Rows.Add();
-                gridProductList.Rows[row].Cells[0].Value = Item.category;
-                gridProductList.Rows[row].Cells[1].Value = Item.name;
-                gridProductList.Rows[row].Cells[2].Value = Item.salesPriceS;
-                gridProductList.Rows[row].Cells[3].Value = Item.marketPriceS;
-                gridProductList.Rows[row].Cells[4].Value = Item.weightS;
-                gridProductList.Rows[row].Cells[5].Value = amount;
+                gridProductList.Rows[row].Cells[0].Value = Item.Category;
+                gridProductList.Rows[row].Cells[1].Value = Item.Name;
+                gridProductList.Rows[row].Cells[2].Value = Item.SalesPrice;
+                gridProductList.Rows[row].Cells[3].Value = Item.MarketPrice;
+                gridProductList.Rows[row].Cells[4].Value = Item.Weight;
+                gridProductList.Rows[row].Cells[5].Value = Item.Amount;
                 row++;
             }
         }
@@ -42,7 +38,6 @@ namespace UserInterface
         {
             string name = "Nameless";
             int row = 0;
-            string amount = "0";
 
             try
             {
@@ -53,14 +48,12 @@ namespace UserInterface
                     {
                         Item.IncAmount(int.Parse(IncTextBox.Text));
                     }
-
-                    amount = Item.amount.ToString();
-                    gridProductList.Rows[row].Cells[0].Value = Item.category;
-                    gridProductList.Rows[row].Cells[1].Value = Item.name;
-                    gridProductList.Rows[row].Cells[2].Value = Item.salesPriceS;
-                    gridProductList.Rows[row].Cells[3].Value = Item.marketPriceS;
-                    gridProductList.Rows[row].Cells[4].Value = Item.weightS;
-                    gridProductList.Rows[row].Cells[5].Value = amount;
+                    gridProductList.Rows[row].Cells[0].Value = Item.Category;
+                    gridProductList.Rows[row].Cells[1].Value = Item.Name;
+                    gridProductList.Rows[row].Cells[2].Value = Item.SalesPrice;
+                    gridProductList.Rows[row].Cells[3].Value = Item.MarketPrice;
+                    gridProductList.Rows[row].Cells[4].Value = Item.Weight;
+                    gridProductList.Rows[row].Cells[5].Value = Item.Amount;
                     row++;
                 }
             }
@@ -73,7 +66,6 @@ namespace UserInterface
         {
             string name = "Nameless";
             int row = 0;
-            string amount = "0";
 
             try
             {
@@ -84,14 +76,12 @@ namespace UserInterface
                     {
                         Item.DecAmount(int.Parse(DecTextBox.Text));
                     }
-
-                    amount = Item.amount.ToString();
-                    gridProductList.Rows[row].Cells[0].Value = Item.category;
-                    gridProductList.Rows[row].Cells[1].Value = Item.name;
-                    gridProductList.Rows[row].Cells[2].Value = Item.salesPriceS;
-                    gridProductList.Rows[row].Cells[3].Value = Item.marketPriceS;
-                    gridProductList.Rows[row].Cells[4].Value = Item.weightS;
-                    gridProductList.Rows[row].Cells[5].Value = amount;
+                    gridProductList.Rows[row].Cells[0].Value = Item.Category;
+                    gridProductList.Rows[row].Cells[1].Value = Item.Name;
+                    gridProductList.Rows[row].Cells[2].Value = Item.SalesPrice;
+                    gridProductList.Rows[row].Cells[3].Value = Item.MarketPrice;
+                    gridProductList.Rows[row].Cells[4].Value = Item.Weight;
+                    gridProductList.Rows[row].Cells[5].Value = Item.Amount;
                     row++;
                 }
             }
@@ -109,7 +99,7 @@ namespace UserInterface
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            searchWord = SearchTextBox.Text;
+            string searchWord = SearchTextBox.Text;
 
             try
             {
