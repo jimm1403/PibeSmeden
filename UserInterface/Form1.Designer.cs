@@ -33,11 +33,13 @@
             this.lblLastAction = new System.Windows.Forms.Label();
             this.btnRecieve = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.newOrderBtn = new System.Windows.Forms.Button();
+            this.showOrdersBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 105);
+            this.btnAdd.Location = new System.Drawing.Point(12, 178);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(128, 30);
             this.btnAdd.TabIndex = 0;
@@ -68,7 +70,7 @@
             // 
             // btnRecieve
             // 
-            this.btnRecieve.Location = new System.Drawing.Point(12, 69);
+            this.btnRecieve.Location = new System.Drawing.Point(12, 142);
             this.btnRecieve.Name = "btnRecieve";
             this.btnRecieve.Size = new System.Drawing.Size(128, 30);
             this.btnRecieve.TabIndex = 3;
@@ -78,7 +80,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(12, 141);
+            this.btnRemove.Location = new System.Drawing.Point(12, 214);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(128, 30);
             this.btnRemove.TabIndex = 4;
@@ -86,11 +88,33 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // newOrderBtn
+            // 
+            this.newOrderBtn.Location = new System.Drawing.Point(13, 70);
+            this.newOrderBtn.Name = "newOrderBtn";
+            this.newOrderBtn.Size = new System.Drawing.Size(127, 30);
+            this.newOrderBtn.TabIndex = 5;
+            this.newOrderBtn.Text = "Ny ordre";
+            this.newOrderBtn.UseVisualStyleBackColor = true;
+            this.newOrderBtn.Click += new System.EventHandler(this.newOrderBtn_Click);
+            // 
+            // showOrdersBtn
+            // 
+            this.showOrdersBtn.Location = new System.Drawing.Point(13, 106);
+            this.showOrdersBtn.Name = "showOrdersBtn";
+            this.showOrdersBtn.Size = new System.Drawing.Size(127, 30);
+            this.showOrdersBtn.TabIndex = 6;
+            this.showOrdersBtn.Text = "Vis ordrer";
+            this.showOrdersBtn.UseVisualStyleBackColor = true;
+            this.showOrdersBtn.Click += new System.EventHandler(this.showOrdersBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(152, 180);
+            this.ClientSize = new System.Drawing.Size(152, 251);
+            this.Controls.Add(this.showOrdersBtn);
+            this.Controls.Add(this.newOrderBtn);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnRecieve);
             this.Controls.Add(this.lblLastAction);
@@ -108,6 +132,8 @@
         private System.Windows.Forms.Label lblLastAction;
         private System.Windows.Forms.Button btnRecieve;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button newOrderBtn;
+        private System.Windows.Forms.Button showOrdersBtn;
     }
 }
 
