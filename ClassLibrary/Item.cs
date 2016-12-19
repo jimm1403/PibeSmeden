@@ -7,15 +7,15 @@ namespace ClassLibrary
 {
     public class Item
     {
-        public string category;
-        public string name;
-        public double salesPrice;
-        public string salesPriceS;
-        public double marketPrice;
-        public string marketPriceS;
-        public double weight;
-        public string weightS;
-        public int amount;
+        string category;
+        string name;
+        double salesPrice;
+        string salesPriceS;
+        double marketPrice;
+        string marketPriceS;
+        double weight;
+        string weightS;
+        int amount;
         bool warnignToogle;
         int warningThreshold;
         int warningCountdown;
@@ -222,13 +222,13 @@ namespace ClassLibrary
         }
         public void IncAmount(int incAmount)
         {
-            amount += incAmount;
+            Amount += incAmount;
         }
         public void DecAmount(int decAmount)
         {
-            if (amount >= decAmount)
+            if (Amount >= decAmount)
             {
-                amount -= decAmount;
+                Amount -= decAmount;
             }
             else
             {
