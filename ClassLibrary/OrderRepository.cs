@@ -7,7 +7,42 @@ namespace ClassLibrary
 {
     public class OrderRepository
     {
-        static List<Order> orderList = new List<Order>();
+        public static List<Order> orderList = new List<Order>();
+        
+        public Order FindOrderById(int id)
+        {
+            Order foundOrder = orderList[0];
+            int i = 0;
+            bool found = false;
+
+            while (i < orderList.Count && !found)
+            {
+                if (orderList[i].GetId() == id)
+                {
+                    foundOrder = orderList[i];
+                }
+            }
+
+            return foundOrder;
+        }
+        public Order FindNewestOrder()
+        {
+            Order foundOrder = orderList[0];
+            int i = 0;
+            bool found = false;
+
+            while (i < orderList.Count && !found)
+            {
+                if (orderList.Count == i)
+                {
+                    foundOrder = orderList[i];
+                    found = true;
+
+                }
+                i++;
+            }
+            return foundOrder;
+        }
 
         public List<Order> GetList()
         {
@@ -51,7 +86,7 @@ namespace ClassLibrary
                 throw new Exception("No need to add orders that is marked as already complet, " + markedComplete + " Orders skipped");
             }
         }
-        public List<Order> searchOrder(string searchterm)
+        /*public List<Order> searchOrder(string searchterm)
         {
             List<Order> output = new List<Order>();
 
@@ -69,6 +104,6 @@ namespace ClassLibrary
                 throw new Exception("search term did not match anything");
             }
             return output;
-        }
+        }*/
     }
 }
