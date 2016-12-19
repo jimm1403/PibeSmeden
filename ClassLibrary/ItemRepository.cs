@@ -11,6 +11,24 @@ namespace ClassLibrary
 
         public OrderRepository orderRepo = new OrderRepository();
 
+        public Item FindItem(string itemName)
+        {
+            Item foundItem = inventoryList[0];
+            int i = 0;
+            bool found = false;
+
+            while (i<inventoryList.Count && !found)
+            {
+                if (inventoryList[i].Name == itemName)
+                {
+                    foundItem = inventoryList[i];
+                    found = true;
+                    
+                }
+                i++;
+            }
+            return foundItem;
+        }
 
         public void AddToInventoryList(Item item)
         {
@@ -92,7 +110,7 @@ namespace ClassLibrary
 
             foreach (Item item in inventoryList)
             {
-                searchLineList.Add(item.ToStringItem());
+                searchLineList.Add(item.comboBoxToString());
             }
 
             return searchLineList;

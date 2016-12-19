@@ -235,6 +235,10 @@ namespace ClassLibrary
                 throw new Exception("Can't go below zero");
             }
         }
+        public string comboBoxToString()
+        {
+            return Name;
+        }
     }
 }
 
