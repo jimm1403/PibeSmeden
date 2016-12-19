@@ -21,7 +21,7 @@ namespace UserInterface
             gridProductList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             int row = 0;
 
-            foreach (var Item in ItemRepository.inventoryList)
+            foreach (var Item in itemRepo.GetList())
             {
                 gridProductList.Rows.Add();
                 gridProductList.Rows[row].Cells[0].Value = Item.Category;
@@ -42,9 +42,9 @@ namespace UserInterface
             try
             {
             name = gridProductList.SelectedRows[0].Cells[1].Value.ToString();
-                foreach (var Item in ItemRepository.inventoryList)
+                foreach (var Item in itemRepo.GetList())
                 {
-                    if (Item.name == name)
+                    if (Item.Name == name)
                     {
                         Item.IncAmount(int.Parse(IncTextBox.Text));
                     }
@@ -70,9 +70,9 @@ namespace UserInterface
             try
             {
                 name = gridProductList.SelectedRows[0].Cells[1].Value.ToString();
-                foreach (var Item in ItemRepository.inventoryList)
+                foreach (var Item in itemRepo.GetList())
                 {
-                    if (Item.name == name)
+                    if (Item.Name == name)
                     {
                         Item.DecAmount(int.Parse(DecTextBox.Text));
                     }
