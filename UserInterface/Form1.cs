@@ -54,5 +54,12 @@ namespace UserInterface
             FormShowOrders showOrderForm = new FormShowOrders();
             showOrderForm.Show();
         }
+
+        private void LogOutBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormLogin f2 = new FormLogin();
+            f2.Show();
+        }
     }
 }

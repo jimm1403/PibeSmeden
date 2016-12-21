@@ -35,6 +35,7 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.newOrderBtn = new System.Windows.Forms.Button();
             this.showOrdersBtn = new System.Windows.Forms.Button();
+            this.LogOutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -108,11 +109,22 @@
             this.showOrdersBtn.UseVisualStyleBackColor = true;
             this.showOrdersBtn.Click += new System.EventHandler(this.showOrdersBtn_Click);
             // 
+            // LogOutBtn
+            // 
+            this.LogOutBtn.Location = new System.Drawing.Point(13, 250);
+            this.LogOutBtn.Name = "LogOutBtn";
+            this.LogOutBtn.Size = new System.Drawing.Size(128, 30);
+            this.LogOutBtn.TabIndex = 7;
+            this.LogOutBtn.Text = "Log af";
+            this.LogOutBtn.UseVisualStyleBackColor = true;
+            this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(152, 251);
+            this.ClientSize = new System.Drawing.Size(152, 289);
+            this.Controls.Add(this.LogOutBtn);
             this.Controls.Add(this.showOrdersBtn);
             this.Controls.Add(this.newOrderBtn);
             this.Controls.Add(this.btnRemove);
@@ -134,6 +146,7 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button newOrderBtn;
         private System.Windows.Forms.Button showOrdersBtn;
+        private System.Windows.Forms.Button LogOutBtn;
     }
 }
 
