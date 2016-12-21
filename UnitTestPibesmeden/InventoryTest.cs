@@ -9,18 +9,19 @@ namespace UnitTestPibesmeden
     [TestClass]
     public class InventoryTest
     {
-        //ændre her under
-        List<Item> itemList;
+
         List<string> itemListString;
-        
+        List<Item> itemList;
+       
         Item dummyItem = new Item("Dummy", "Dummy", 0.01, 0.01, 0, 1);
         Item cigaret1 = new Item("Cigaretter", "Prince", 44.00, 30.00, 200);
         Item cigaret2 = new Item("Cigaretter", "Kings", 41.00, 27.00 , 200);
         Item tobak1 = new Item("Tobak", "Home Roll", 85.95, 71.95, 100, 62.00);
         Item tobak2 = new Item("Tobak", "Escort", 113.95, 99.95, 100, 73.00);
+
         ItemRepository itemRepo = new ItemRepository();
         
-        //
+        
         [TestInitialize()]
         public void Initialize()
         {
@@ -205,7 +206,7 @@ namespace UnitTestPibesmeden
             Assert.AreEqual(566, itemList[0].Amount);
         }
         [TestMethod]
-        public void CanDecreasAmountBySetAmount()
+        public void CanDecreaseAmountBySetAmount()
         {
             itemRepo.AddToInventoryList(cigaret1);
             itemList = itemRepo.GetList();
@@ -215,7 +216,7 @@ namespace UnitTestPibesmeden
             Assert.AreEqual(134, itemList[0].Amount);
         }
         [TestMethod]
-        public void CanNotDecreasAmountBelowZero()
+        public void CanNotDecreaseAmountBelowZero()
         {
             itemRepo.AddToInventoryList(cigaret1);
             itemList = itemRepo.GetList();
